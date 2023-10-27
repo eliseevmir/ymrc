@@ -9,12 +9,9 @@ import knex from '~/middlewares/knex';
 import subscriptions from '~/middlewares/subscriptions';
 import files from '~/middlewares/files';
 import redis from '~/middlewares/redis';
-import clients from '~/middlewares/clients';
-import deals from '~/middlewares/deals';
 import logger from '~/middlewares/logger';
 import webpages from '~/middlewares/webpages';
 import webmenu from '~/middlewares/webmenu';
-import blog from '~/middlewares/blog';
 import notifications from '~/middlewares/notifications';
 import schema from '~/schema';
 import config from '~/config';
@@ -48,14 +45,11 @@ const bootstrap = () => {
    * This middlewares - is a @via-profit-services/core middlewares
    */
   const usersMiddleware = users({ jwt: config.jwt });
-  const clientsMiddleware = clients();
-  const dealsMiddleware = deals();
   const webpagesMiddleware = webpages();
   const webmenuMiddleware = webmenu();
   const loggerMiddleware = logger({ logger: loggerService });
   const permissionsMiddleware = permissions.factory(config.permissions);
   const filesMiddleware = files(config.files);
-  const blogMiddleware = blog();
   const notificationsMiddleware = notifications();
   const subscriptionsMiddleware = subscriptions({ ...config, server, loggerService });
   const { knexMiddleware, knexInstance } = knex(config);
@@ -88,12 +82,9 @@ const bootstrap = () => {
       redisMiddleware,
       subscriptionsMiddleware,
       usersMiddleware,
-      clientsMiddleware,
-      dealsMiddleware,
       webpagesMiddleware,
       webmenuMiddleware,
       filesMiddleware,
-      blogMiddleware,
       notificationsMiddleware,
 
       /**

@@ -1,5 +1,5 @@
-import path = require('node:path');
-import NodemonPlugin = require('nodemon-webpack-plugin');
+import path from 'node:path';
+import NodemonPlugin from 'nodemon-webpack-plugin';
 import { Configuration, DefinePlugin } from 'webpack';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

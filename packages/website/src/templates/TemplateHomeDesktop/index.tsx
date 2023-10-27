@@ -47,13 +47,14 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
           }
         `}
       />
+      Home Page
       <Container>
-        <Header />
+        {/* <Header />
         <TemplateHomeSlider fragmentRef={template} />
         <TemplateHomeHeading fragmentRef={template} />
         <TemplateHomePayments fragmentRef={template} />
         <TemplateHomeInfo />
-        <TemplateHomePrices />
+        <TemplateHomePrices /> */}
       </Container>
     </>
   );
@@ -66,9 +67,10 @@ graphql`
     template {
       __typename
       ... on TemplateHomePage {
-        ...TemplateHomeHeadingFragment
-        ...TemplateHomePaymentsFragment
-        ...TemplateHomeSliderFragment
+      id
+        # ...TemplateHomeHeadingFragment
+        # ...TemplateHomePaymentsFragment
+        # ...TemplateHomeSliderFragment
       }
     }
   }

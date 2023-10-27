@@ -5,7 +5,6 @@ import loadable from '@loadable/component';
 import usersRouter from './users-router';
 import pagesRouter from './pages-router';
 import dashboardRouter from './dashboard-router';
-import clientsRouter from '~/routes/clients-router';
 
 const AdminTemplate = loadable(() => import('~/templates/AdminTemplate/index'));
 const FallbackTemplate = loadable(() => import('~/templates/FallbackTemplate/index'));
@@ -16,7 +15,7 @@ export const routes: RouteObject[] = [
     path: '/',
     caseSensitive: true,
     element: <AdminTemplate />,
-    children: [usersRouter, pagesRouter, dashboardRouter, clientsRouter],
+    children: [usersRouter, pagesRouter, dashboardRouter],
   },
 
   {

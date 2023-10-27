@@ -109,9 +109,6 @@ type Query {
   """Token info"""
   authentification: AuthentificationQuery!
 
-  """Queries of the simple clients list and client data"""
-  clients: ClientsQuery!
-
   """File storage"""
   files: FilesQuery!
 
@@ -120,9 +117,6 @@ type Query {
 
   """Public queries for the website render"""
   pages: PagesQuery!
-
-  """Queries of simple blog"""
-  blog: BlogQuery!
 
   """Queries of users notifications"""
   notifications: NotificationsQuery!
@@ -182,73 +176,6 @@ enum TokenType {
 type TokenVerificationError implements Error {
   name: String!
   msg: String!
-}
-
-type ClientsQuery {
-  client(id: ID!): Client
-  list(first: Int, last: Int, after: String, before: String, id: [ID!], status: [ClientStatus!], legalStatus: [ClientLegalStatus!], orderBy: [ClientsOrderBy!], search: [ClientsFilterSearch!]): ClientsConnection!
-}
-
-type Client implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  name: String!
-  comment: String
-  status: ClientStatus!
-  legalStatus: ClientLegalStatus!
-  persons: [Person!]
-}
-
-enum ClientStatus {
-  ACTIVE
-  INACTIVE
-}
-
-enum ClientLegalStatus {
-  PERSON
-  LEGAL
-  ENTREPRENEUR
-  SELFEMPLOYED
-}
-
-type Person implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  name: String!
-  heldPost: String!
-  comment: String
-  client: Client!
-}
-
-type ClientsConnection implements Connection {
-  pageInfo: PageInfo!
-  edges: [ClientEdge!]!
-}
-
-type ClientEdge implements Edge {
-  cursor: String!
-  node: Client!
-}
-
-input ClientsOrderBy {
-  field: ClientsOrderField!
-  direction: OrderDirection!
-}
-
-enum ClientsOrderField {
-  NAME
-}
-
-input ClientsFilterSearch {
-  field: ClientsFilterSearchField!
-  query: String!
-}
-
-enum ClientsFilterSearchField {
-  NAME
-  COMMENT
 }
 
 type FilesQuery {
@@ -568,7 +495,7 @@ type Page implements Node {
   childs: [Page!]
 }
 
-union PageTemplate = TemplateHomePage | TemplateSecondPage | TemplateFallbackPage | TemplateBlogPostPage | TemplateBlogPage
+union PageTemplate = TemplateHomePage | TemplateSecondPage | TemplateFallbackPage
 
 type TemplateHomePage implements PageTemplateInterface {
   id: ID!
@@ -670,58 +597,6 @@ type TemplateFallbackPage implements PageTemplateInterface {
 
   """Page content"""
   content: ContentBlockLexical
-}
-
-type TemplateBlogPostPage implements PageTemplateInterface {
-  id: ID!
-  name: TemplateName!
-  displayName: String!
-  page: Page!
-
-  """H1 heading"""
-  heading: ContentBlockPlainText
-
-  """Post image"""
-  image: ContentBlockImage
-}
-
-type TemplateBlogPage implements PageTemplateInterface {
-  id: ID!
-  name: TemplateName!
-  displayName: String!
-  page: Page!
-
-  """H1 heading"""
-  heading: ContentBlockPlainText
-  posts(first: Int, last: Int, after: String, before: String, orderBy: [BlogPostOrderBy!]): BlogPostsConnection!
-}
-
-type BlogPostsConnection implements Connection {
-  pageInfo: PageInfo!
-  edges: [BlogPostEdge!]!
-}
-
-type BlogPostEdge implements Edge {
-  cursor: String!
-  node: BlogPost!
-}
-
-type BlogPost implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  name: String!
-  publishedAt: DateTime!
-  page: Page
-}
-
-input BlogPostOrderBy {
-  field: BlogPostOrderField!
-  direction: OrderDirection!
-}
-
-enum BlogPostOrderField {
-  PUBLISHED_AT
 }
 
 """Web page meta data"""
@@ -874,10 +749,6 @@ enum PageMenuItemOrderField {
   ORDER
   CREATED_AT
   UPDATED_AT
-}
-
-type BlogQuery {
-  posts(first: Int, last: Int, after: String, before: String, id: [ID!], orderBy: [BlogPostOrderBy!]): BlogPostsConnection!
 }
 
 type NotificationsQuery {

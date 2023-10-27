@@ -29,16 +29,6 @@ const TemplateSecondDesktop = loadable(() => import('~/templates/TemplateSecondD
   fallback: <LoadingIndicator />,
 });
 
-const TemplateBlogPostDesktop = loadable(
-  () => import('~/templates/TemplateBlogPostDesktop/index'),
-  {
-    fallback: <LoadingIndicator />,
-  },
-);
-
-const TemplateBlogDesktop = loadable(() => import('~/templates/TemplateBlogDesktop/index'), {
-  fallback: <LoadingIndicator />,
-});
 
 const TemplateFallbackDesktop = loadable(
   () => import('~/templates/TemplateFallbackDesktop/index'),
@@ -74,7 +64,6 @@ const Page: React.FC = () => {
   const { pages } = useLazyLoadQuery<PageQuery>(query, {
     path: pathname,
     isDesktop,
-    isBlog,
     // firstPost: 10,
     // afterPost: null,
   });
@@ -108,14 +97,8 @@ const Page: React.FC = () => {
       case t === 'TemplateSecondPage':
         return <TemplateSecondDesktop fragmentRef={fragmentRef} />;
 
-      case t === 'TemplateBlogPostPage':
-        return <TemplateBlogPostDesktop fragmentRef={fragmentRef} />;
-
       case t === 'TemplateFallbackPage':
         return <TemplateFallbackDesktop fragmentRef={fragmentRef} />;
-
-      case t === 'TemplateBlogPage':
-        return <TemplateBlogDesktop fragmentRef={fragmentRef} />;
 
       default:
         return <>No template</>;
@@ -142,7 +125,7 @@ const Page: React.FC = () => {
 export default Page;
 
 graphql`
-  query PageQuery($path: String!, $isDesktop: Boolean!, $isBlog: Boolean!) {
+  query PageQuery($path: String!, $isDesktop: Boolean!) {
     pages {
       resolve(path: $path) {
         id
@@ -154,8 +137,6 @@ graphql`
         ...TemplateHomeMobileFragment @skip(if: $isDesktop)
         ...TemplateFallbackDesktopFragment
         ...TemplateSecondDesktopFragment
-        ...TemplateBlogPostDesktopFragment @include(if: $isBlog)
-        ...TemplateBlogDesktopFragment @include(if: $isBlog)
       }
     }
   }

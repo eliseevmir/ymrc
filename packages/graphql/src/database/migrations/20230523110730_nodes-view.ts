@@ -7,7 +7,6 @@ export async function up(knex: Knex): Promise<void> {
       union select id, 'Account' as "type" from "accounts"
       union select id, 'File' as "type" from "files"
       union select id, 'Page' as "type" from "pagesList"
-      union select id, 'BlogPost' as "type" from "blogPosts"
       union select id, 'ContentBlockPlainText' as "type" from "contentBlockPlainText"
       union select id, 'ContentBlockImage' as "type" from "contentBlockImage"
       union select id, 'ContentBlockLexical' as "type" from "contentBlockFormattedText";
