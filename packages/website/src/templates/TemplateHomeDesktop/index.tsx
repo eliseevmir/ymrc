@@ -4,11 +4,8 @@ import { Global, css, useTheme } from '@emotion/react';
 import { graphql, useFragment } from 'react-relay';
 
 import Header from '~/components/Header';
-import TemplateHomeSlider from './TemplateHomeSlider';
-import TemplateHomePayments from './TemplateHomePayments';
-import TemplateHomeInfo from './TemplateHomeInfo';
-import TemplateHomePrices from './TemplateHomePrices';
-import TemplateHomeHeading from './TemplateHomeHeading';
+import Footer from '~/components/Footer';
+// import Slider from '~/components/Slider';
 import fragment, {
   TemplateHomeDesktopFragment$key,
 } from '~/relay/artifacts/TemplateHomeDesktopFragment.graphql';
@@ -20,7 +17,16 @@ interface Props {
 const Container = styled.div`
   display: flex;
   flex-flow: column;
-  min-height: 100vh;
+`;
+
+const MainContainer = styled.main`
+  min-height: 1000px;
+`;
+
+const Slider = styled.div`
+  background-color: pink;
+  width: 100%;
+  height: 400px;
 `;
 
 const TemplateHomeDesktopFragment: React.FC<Props> = props => {
@@ -47,15 +53,14 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
           }
         `}
       />
-      Home Page
-      <Container>
-        {/* <Header />
-        <TemplateHomeSlider fragmentRef={template} />
-        <TemplateHomeHeading fragmentRef={template} />
-        <TemplateHomePayments fragmentRef={template} />
-        <TemplateHomeInfo />
-        <TemplateHomePrices /> */}
-      </Container>
+      {/* <Container> */}
+      <Header />
+      <MainContainer>
+        <Slider />
+      </MainContainer>
+      <Footer />
+
+      {/* </Container> */}
     </>
   );
 };
@@ -67,7 +72,7 @@ graphql`
     template {
       __typename
       ... on TemplateHomePage {
-      id
+        id
         # ...TemplateHomeHeadingFragment
         # ...TemplateHomePaymentsFragment
         # ...TemplateHomeSliderFragment

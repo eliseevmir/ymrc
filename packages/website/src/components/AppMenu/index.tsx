@@ -17,10 +17,12 @@ const MenuLink = styled(Link)`
 
 const AppMenu: React.FC = () => (
   <MenuContainer>
-    <MenuLink to="/">Home</MenuLink>
-    <MenuLink to="/home-2">Home page 2</MenuLink>
-    <MenuLink to="/blog">Blog</MenuLink>
-    <MenuLink to="/404">404</MenuLink>
+    <MenuLink to="/">О центре</MenuLink>
+    <MenuLink to="/">Наука</MenuLink>
+    <MenuLink to="/">Образование</MenuLink>
+    <MenuLink to="/">Практика</MenuLink>
+    <MenuLink to="/">Контакты</MenuLink>
+    {/* <MenuLink to="/404">404</MenuLink> */}
   </MenuContainer>
 );
 
