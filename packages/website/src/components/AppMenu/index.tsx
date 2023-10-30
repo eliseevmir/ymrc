@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import Menu, { MenuProps } from '@via-profit/ui-kit/Menu';
 
 const MenuContainer = styled.div`
   display: flex;
@@ -15,15 +16,18 @@ const MenuLink = styled(Link)`
   text-decoration: none;
 `;
 
-const AppMenu: React.FC = () => (
-  <MenuContainer>
-    <MenuLink to="/">О центре</MenuLink>
-    <MenuLink to="/">Наука</MenuLink>
-    <MenuLink to="/">Образование</MenuLink>
-    <MenuLink to="/">Практика</MenuLink>
-    <MenuLink to="/">Контакты</MenuLink>
-    {/* <MenuLink to="/404">404</MenuLink> */}
-  </MenuContainer>
-);
+const AppMenu: React.FC = () => {
+  return (
+    <MenuContainer>
+      <MenuLink to="/">О центре</MenuLink>
+      <MenuLink to="/nauka">Деятельность</MenuLink>
+      <MenuLink to="/">Конференции</MenuLink>
+      <MenuLink to="/">Услуги</MenuLink>
+      <MenuLink to="/">ОСМУиС</MenuLink>
+      <MenuLink to="/">Контакты</MenuLink>
+      {/* <MenuLink to="/404">404</MenuLink> */}
+    </MenuContainer>
+  );
+};
 
 export default AppMenu;

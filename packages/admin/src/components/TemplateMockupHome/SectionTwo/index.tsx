@@ -8,7 +8,7 @@ import {
   MockupSafeFrame,
   MockupImageElement,
 } from '~/components/Mockup';
-import ModalDrawer from '@via-profit/ui-kit/Modal/ModalDrawer';
+import ModalDrawer from '@via-profit/ui-kit/Modal/Drawer';
 import fragmentSpec, {
   SectionTwoTemplateMockupHomeFragment$key,
 } from '~/relay/artifacts/SectionTwoTemplateMockupHomeFragment.graphql';
@@ -85,7 +85,7 @@ const SectionTwo: React.FC<SectionTwoProps> = props => {
           </Items>
         </Inner>
       </Container>
-      <ModalDrawer isOpen={openDrawer !== null} onRequestClose={() => setOpenDrawer(null)}>
+      <ModalDrawer isOpen={openDrawer !== null} onRequestClose={() => setOpenDrawer(null)} anchor="bottom">
         <div style={{ height: '60vh' }}>
           {openDrawer === 'items' && <>Edit items</>}
           {openDrawer === 'subtitle' && <>Edit subtitle</>}

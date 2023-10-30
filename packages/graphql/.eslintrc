@@ -25,6 +25,12 @@
         "ignoreReadBeforeAssign": true
       }
     ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "no-var": "error",
     "no-useless-constructor": "warn",
     "no-dupe-class-members": "error",

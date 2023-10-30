@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import ModalDrawer from '@via-profit/ui-kit/Modal/ModalDrawer';
+import ModalDrawer from '@via-profit/ui-kit/Modal/Drawer';
 
 import { MockupTextElement, MockupSafeFrame, MockupSelectionBox } from '~/components/Mockup';
 
@@ -62,7 +62,7 @@ const SectionHeader: React.FC = () => {
         </ContactSelector>
       </Container>
 
-      <ModalDrawer isOpen={openDrawer} onRequestClose={() => setOpenDrawer(false)}>
+      <ModalDrawer isOpen={openDrawer} onRequestClose={() => setOpenDrawer(false)} anchor="bottom">
         <div style={{ height: '60vh' }}>Edit data</div>
       </ModalDrawer>
     </>

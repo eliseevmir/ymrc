@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import ModalDrawer from '@via-profit/ui-kit/Modal/ModalDrawer';
+import ModalDrawer from '@via-profit/ui-kit/Modal/Drawer';
 
 import {
   MockupSelectionBox,
@@ -112,7 +112,7 @@ const SectionThree: React.FC = () => {
         </ContentInner>
         <MiddleDecorations />
       </ContentContainer>
-      <ModalDrawer isOpen={openDrawer} onRequestClose={() => setOpenDrawer(false)}>
+      <ModalDrawer isOpen={openDrawer} onRequestClose={() => setOpenDrawer(false)} anchor="bottom">
         <div style={{ height: '60vh' }}>Edit data</div>
       </ModalDrawer>
     </>

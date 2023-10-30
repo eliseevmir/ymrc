@@ -28,30 +28,26 @@ export async function up(knex: Knex): Promise<void> {
     statusCode: 200,
   };
 
-  
+  //   const contentBlocks: ContentBlocksTableModel[] = [];
+  //   const contentBlockPlainText: ContentBlockPlainTextTableModel[] = [];
 
-//   const contentBlocks: ContentBlocksTableModel[] = [];
-//   const contentBlockPlainText: ContentBlockPlainTextTableModel[] = [];
+  //   blocks.forEach(block => {
+  //     const id = crypto.randomUUID();
+  //     contentBlocks.push({
+  //       id,
+  //       createdAt: new Date().toISOString(),
+  //       updatedAt: new Date().toISOString(),
+  //       type: 'PLAIN_TEXT',
+  //       page: mainPage.id,
+  //       name: block.name,
+  //       template: templateHomePage.id,
+  //     });
 
-//   blocks.forEach(block => {
-//     const id = crypto.randomUUID();
-//     contentBlocks.push({
-//       id,
-//       createdAt: new Date().toISOString(),
-//       updatedAt: new Date().toISOString(),
-//       type: 'PLAIN_TEXT',
-//       page: mainPage.id,
-//       name: block.name,
-//       template: templateHomePage.id,
-//     });
-
-//     contentBlockPlainText.push({
-//       id,
-//       text: block.text,
-//     });
-//   });
-
- 
+  //     contentBlockPlainText.push({
+  //       id,
+  //       text: block.text,
+  //     });
+  //   });
 
   const pagesMeta: PagesMetaTableModel[] = [
     {
@@ -65,8 +61,8 @@ export async function up(knex: Knex): Promise<void> {
 
   await knex('templates').insert(templateHomePage);
   await knex('pagesList').insert(mainPage);
-//   await knex('contentBlocks').insert(contentBlocks);
-//   await knex('contentBlockPlainText').insert(contentBlockPlainText);
+  //   await knex('contentBlocks').insert(contentBlocks);
+  //   await knex('contentBlockPlainText').insert(contentBlockPlainText);
   await knex('pagesMeta').insert(pagesMeta);
 }
 

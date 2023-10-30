@@ -29,7 +29,6 @@ const TemplateSecondDesktop = loadable(() => import('~/templates/TemplateSecondD
   fallback: <LoadingIndicator />,
 });
 
-
 const TemplateFallbackDesktop = loadable(
   () => import('~/templates/TemplateFallbackDesktop/index'),
   {

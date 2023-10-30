@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import ModalDrawer, { ModalDrawerProps } from '@via-profit/ui-kit/Modal/ModalDrawer';
+import ModalDrawer, { DrawerProps } from '@via-profit/ui-kit/Modal/Drawer';
 
 import UserEditForm, { UserEditFormProps } from '~/components/UserEditForm';
 import LoadingIndicator from '~/components/LoadingIndicator';
 
 export interface UserEditDrawerProps
-  extends Omit<ModalDrawerProps, 'id' | 'isOpen' | 'children'>,
+  extends Omit<DrawerProps, 'id' | 'isOpen' | 'children'>,
     Omit<UserEditFormProps, 'id'> {
   readonly id: string | null;
 }

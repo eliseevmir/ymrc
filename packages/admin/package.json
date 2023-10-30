@@ -57,7 +57,7 @@
     "@loadable/component": "^5.15.3",
     "@loadable/server": "^5.16.1",
     "@reduxjs/toolkit": "^1.9.5",
-    "@via-profit/ui-kit": "^0.1.0-rc.24",
+    "@via-profit/ui-kit": "^0.1.0-rc.39",
     "concurrently": "^8.2.1",
     "dotenv": "^16.3.1",
     "graphql-ws": "^5.14.0",
