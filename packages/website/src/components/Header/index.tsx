@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import NavMenu from '~/components/AppMenu';
+// import NavMenu from '~/components/AppMenu';
+import NavMenu from '~/components/NavMenu';
 import SafeFrame from '~/components/SafeFrame';
 import HeaderToolbar from '~/components/Header/HeaderToolbar';
 import HeaderContent from '~/components/Header/HeaderContent';
+import HeaderMenu from '~/components/HeaderMenu';
 
 export type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -39,7 +41,9 @@ const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (pro
     <Container {...otherProps} ref={ref}>
       <Inner>
         <HeaderContent />
-        <NavMenu />
+        {/* <NavMenu /> */}
+
+        <HeaderMenu />
         {/* <HeaderToolbar /> */}
         {children}
       </Inner>

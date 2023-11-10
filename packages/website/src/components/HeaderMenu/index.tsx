@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 import { graphql, useFragment } from 'react-relay';
 
 import RootItem from '~/components/HeaderMenu/RootItem';
-import fragment, { HeaderMenuFragment$key } from '~/relay/artifacts/HeaderMenuFragment.graphql';
+// import fragment, { HeaderMenuFragment$key } from '~/relay/artifacts/HeaderMenuFragment.graphql';
 
 export interface HeaderMenuProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
-  readonly fragmentRef: HeaderMenuFragment$key;
+  // readonly fragmentRef: HeaderMenuFragment$key;
 }
 
 const Nav = styled.nav`
@@ -27,13 +27,94 @@ const HeaderMenu: React.ForwardRefRenderFunction<HTMLUListElement, HeaderMenuPro
   props,
   ref,
 ) => {
-  const { fragmentRef, ...otherProps } = props;
-  const menu = useFragment<HeaderMenuFragment$key>(fragment, fragmentRef);
+  const {
+    // fragmentRef,
+    ...otherProps
+  } = props;
+  // const menu = useFragment<HeaderMenuFragment$key>(fragment, fragmentRef);
+
+  const items = [
+    {
+      id: '55b30270-ec2e-43b7-ae62-8a7c015ed1c2',
+      url: '/',
+      page: '',
+      target: 'self',
+      childs: '',
+      name: 'О центре',
+      parent: '',
+    },
+    {
+      id: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+      url: '/',
+      page: '',
+      target: 'self',
+      childs: [
+        {
+          id: '55b30270-ec2e-43b7-ae62-8a7c033ed1c2',
+          url: '/',
+          page: '',
+          target: 'self',
+          childs: [],
+          name: 'Медицинская',
+          parent: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+        },
+        {
+          id: '55b30270-ec2e-55b7-ae62-8a7c033ed1c2',
+          url: '/',
+          page: '',
+          target: 'self',
+          childs: [],
+          name: 'Научная',
+          parent: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+        },
+        {
+          id: '88b30270-ec2e-55b7-ae62-8a7c033ed1c2',
+          url: '/',
+          page: '',
+          target: 'self',
+          childs: [],
+          name: 'Образовательная',
+          parent: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+        },
+      ],
+
+      name: 'Деятельность',
+      parent: '',
+    },
+    {
+      id: '55b30275-ec2e-45b7-ae62-8a7c015ed1c2',
+      url: '/',
+      page: '',
+      target: 'self',
+      childs: '',
+      name: 'Услуги',
+      parent: '',
+    },
+    {
+      id: '55b30370-ec2e-45b7-ae62-8a7c015ed1c2',
+      url: '/',
+      page: '',
+      target: 'self',
+      childs: '',
+      name: 'ОСМУиС',
+      parent: '',
+    },
+    {
+      id: '12b30270-ec2e-45b7-ae62-8a7c015ed1c2',
+      url: '/',
+      page: '',
+      target: 'self',
+      childs: '',
+      name: 'Контакты',
+      parent: '',
+    },
+  ];
 
   return (
     <Nav {...otherProps} ref={ref}>
+      {/* <Menu>{menu?.items?.map(item => <RootItem key={item.id} item={item} />)}</Menu> */}
       <Menu>
-        {menu?.items?.map(item => (
+        {items.map(item => (
           <RootItem key={item.id} item={item} />
         ))}
       </Menu>

@@ -96,6 +96,8 @@ const DropdownItem: React.ForwardRefRenderFunction<HTMLLIElement, DropdownItemPr
     setDropdownOpen(false);
   };
 
+  console.log(name);
+
   return (
     <MenuItem {...otherProps} ref={ref} onMouseOver={mouseOverEvent} onMouseLeave={mouseLeaveEvent}>
       <ClassNames>
@@ -110,7 +112,7 @@ const DropdownItem: React.ForwardRefRenderFunction<HTMLLIElement, DropdownItemPr
             `}
           >
             <span>{name || page?.name}</span>
-            {'childs' in item && item.childs?.length && <AngleIcon />}
+            {/* {'childs' in item && item.childs.length > 0 && <AngleIcon />} */}
           </ItemLink>
         )}
       </ClassNames>
@@ -118,9 +120,7 @@ const DropdownItem: React.ForwardRefRenderFunction<HTMLLIElement, DropdownItemPr
       {isItemLevel3(item) && (
         <div style={styles.popper} {...attributes.popper} ref={setPopperElement}>
           <DropDownMenu open={dropdownOpen}>
-            {item.childs?.map(childItem => (
-              <DropdownItemRef key={childItem.id} item={childItem} />
-            ))}
+            {item.childs?.map(childItem => <DropdownItemRef key={childItem.id} item={childItem} />)}
           </DropDownMenu>
         </div>
       )}
