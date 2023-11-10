@@ -58,10 +58,6 @@ const node: GraphQLFieldConfig<unknown, Context, Args> = {
         node = await context.dataloader.webpages.load(id);
         break;
 
-      case 'BlogPost':
-        node = await context.dataloader.blog.load(id);
-        break;
-
       case 'ContentBlockPlainText':
       case 'ContentBlockImage':
       case 'ContentBlockLexical':

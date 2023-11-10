@@ -11,41 +11,29 @@ declare module '@via-profit-services/core' {
     AccessTokenPayload,
     AuthentificationService,
   } from 'users';
-  import type { Client, ClientsService, Person } from 'clients';
-  import type { Deal, Funnel, FunnelStep, DealsService } from 'deals';
   import type { Page, ContentBlock, PagesService, Template } from 'webpages';
   import type { MenuItem, Menu, MenuService } from 'webmenu';
   import type { FilesTableRecord, FilesService } from 'files';
-  import type { BlogPost, BlogService } from 'blog';
   import type { Notification, NotificationsService } from 'notifications';
 
   interface ServicesCollection {
     authentification: AuthentificationService;
-    clients: ClientsService;
-    deals: DealsService;
     files: FilesService;
     users: UsersService;
     webpages: PagesService;
     webmenu: MenuService;
-    blog: BlogService;
     notifications: NotificationsService;
   }
 
   interface DataLoaderCollection {
     accounts: DataLoader<string, Account>;
-    clients: DataLoader<string, Client>;
-    deals: DataLoader<string, Deal>;
     files: DataLoader<string, FilesTableRecord>;
-    funnels: DataLoader<string, Funnel>;
-    funnelSteps: DataLoader<string, FunnelStep>;
     menuItems: DataLoader<string, MenuItem>;
     menus: DataLoader<string, Menu>;
-    persons: DataLoader<string, Person>;
     users: DataLoader<string, User>;
     webpages: DataLoader<string, Page>;
     contentBlocks: DataLoader<string, ContentBlock>;
     templates: DataLoader<string, Template>;
-    blog: DataLoader<string, BlogPost>;
     notifications: DataLoader<string, Notification>;
 
     /**
