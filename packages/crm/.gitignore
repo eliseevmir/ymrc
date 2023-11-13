@@ -1,0 +1,19 @@
+/node_modules/
+/log
+/sandbox.js
+
+/build
+/dist
+
+
+# relay artifacts
+/src/relay/artifacts/*
+!/src/relay/artifacts/.gitkeep
+
+.env
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions

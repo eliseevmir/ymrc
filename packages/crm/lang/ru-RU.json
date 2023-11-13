@@ -1,0 +1,59 @@
+{
+  "1/ISJU": {
+    "defaultMessage": "Поле ввода пароля"
+  },
+  "2wVp84": {
+    "defaultMessage": "Sub Menu 3"
+  },
+  "8B5OJY": {
+    "defaultMessage": "Неверный логин или пароль"
+  },
+  "J76yQ6": {
+    "defaultMessage": "Все права защищены"
+  },
+  "JM0OrP": {
+    "defaultMessage": "Имя пользователя"
+  },
+  "PuZv4f": {
+    "defaultMessage": "Пароль"
+  },
+  "UKU0qj": {
+    "defaultMessage": "Введите пароль"
+  },
+  "YzCmEy": {
+    "defaultMessage": "Sub Menu 1"
+  },
+  "aUQOKX": {
+    "defaultMessage": "Menu 2"
+  },
+  "gAiCX2": {
+    "defaultMessage": "Поле ввода логина"
+  },
+  "gjNjg8": {
+    "defaultMessage": "Отправить форму и для проверки авторизации"
+  },
+  "kGQf/o": {
+    "defaultMessage": "Menu 1"
+  },
+  "lY3qBs": {
+    "defaultMessage": "Введите имя пользователя"
+  },
+  "leEcct": {
+    "defaultMessage": "Неизвестная ошибка"
+  },
+  "meIUt1": {
+    "defaultMessage": "Вы действительно хотите выйти из системы?{br}Для возобновления работы вам потребуется ввести{br}логин и пароль от учётной записи"
+  },
+  "oU4rxk": {
+    "defaultMessage": "Войти"
+  },
+  "ryv8HP": {
+    "defaultMessage": "Выход из системы"
+  },
+  "sDyvSY": {
+    "defaultMessage": "Sub Menu 2"
+  },
+  "z7TYRU": {
+    "defaultMessage": "Авторизация пройдена успешно"
+  }
+}
