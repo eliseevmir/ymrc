@@ -37,76 +37,108 @@ const HeaderMenu: React.ForwardRefRenderFunction<HTMLUListElement, HeaderMenuPro
     {
       id: '55b30270-ec2e-43b7-ae62-8a7c015ed1c2',
       url: '/',
-      page: '',
-      target: 'self',
-      childs: '',
+      page: {
+        id: '',
+        name: '',
+        path: '',
+      },
+      target: 'SELF',
+      childs: null,
       name: 'О центре',
-      parent: '',
+      parent: { id: '' },
     },
     {
       id: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
       url: '/',
-      page: '',
-      target: 'self',
+      page: {
+        id: '',
+        name: '',
+        path: '',
+      },
+      target: 'SELF',
       childs: [
         {
           id: '55b30270-ec2e-43b7-ae62-8a7c033ed1c2',
           url: '/',
-          page: '',
-          target: 'self',
-          childs: [],
+          page: {
+            id: '',
+            name: '',
+            path: '',
+          },
+          target: 'SELF',
+          childs: null,
           name: 'Медицинская',
-          parent: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+          parent: { id: '' },
         },
         {
           id: '55b30270-ec2e-55b7-ae62-8a7c033ed1c2',
           url: '/',
-          page: '',
-          target: 'self',
-          childs: [],
+          page: {
+            id: '',
+            name: '',
+            path: '',
+          },
+          target: 'SELF',
+          childs: null,
           name: 'Научная',
-          parent: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+          parent: { id: '' },
         },
         {
           id: '88b30270-ec2e-55b7-ae62-8a7c033ed1c2',
           url: '/',
-          page: '',
-          target: 'self',
-          childs: [],
+          page: {
+            id: '',
+            name: '',
+            path: '',
+          },
+          target: 'SELF',
+          childs: null,
           name: 'Образовательная',
-          parent: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+          parent: { id: '' },
         },
       ],
 
       name: 'Деятельность',
-      parent: '',
+      parent: { id: '' },
     },
     {
       id: '55b30275-ec2e-45b7-ae62-8a7c015ed1c2',
       url: '/',
-      page: '',
-      target: 'self',
-      childs: '',
+      page: {
+        id: '',
+        name: '',
+        path: '',
+      },
+      target: 'SELF',
+      childs: null,
       name: 'Услуги',
-      parent: '',
+      parent: { id: '' },
     },
     {
       id: '55b30370-ec2e-45b7-ae62-8a7c015ed1c2',
       url: '/',
-      page: '',
-      target: 'self',
-      childs: '',
+      page: {
+        id: '',
+        name: '',
+        path: '',
+      },
+      target: 'SELF',
+      childs: null,
       name: 'ОСМУиС',
-      parent: '',
+      parent: { id: '' },
     },
     {
       id: '12b30270-ec2e-45b7-ae62-8a7c015ed1c2',
-      url: '/',
-      page: '',
-      target: 'self',
-      childs: '',
       name: 'Контакты',
-      parent: '',
+      page: {
+        id: '',
+        name: '',
+        path: '',
+      },
+      target: 'SELF',
+      parent: { id: '' },
+      url: '/',
+      childs: null,
     },
   ];
 
@@ -171,3 +203,48 @@ graphql`
     }
   }
 `;
+
+/*
+ readonly items: ReadonlyArray<{
+    readonly childs: ReadonlyArray<{
+      readonly childs: ReadonlyArray<{
+        readonly id: string;
+        readonly name: string | null;
+        readonly page: {
+          readonly id: string;
+          readonly name: string;
+          readonly path: string;
+        } | null;
+        readonly parent: {
+          readonly id: string;
+        } | null;
+        readonly target: PageWindowTarget;
+        readonly url: string | null;
+      }> | null;
+      readonly id: string;
+      readonly name: string | null;
+      readonly page: {
+        readonly id: string;
+        readonly name: string;
+        readonly path: string;
+      } | null;
+      readonly parent: {
+        readonly id: string;
+      } | null;
+      readonly target: PageWindowTarget;
+      readonly url: string | null;
+    }> | null;
+    readonly id: string;
+    readonly name: string | null;
+    readonly page: {
+      readonly id: string;
+      readonly name: string;
+      readonly path: string;
+    } | null;
+    readonly parent: {
+      readonly id: string;
+    } | null;
+    readonly target: PageWindowTarget;
+    readonly url: string | null;
+  }> | null;
+*/

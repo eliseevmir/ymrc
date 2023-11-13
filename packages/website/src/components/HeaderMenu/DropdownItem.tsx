@@ -96,7 +96,7 @@ const DropdownItem: React.ForwardRefRenderFunction<HTMLLIElement, DropdownItemPr
     setDropdownOpen(false);
   };
 
-  console.log(name);
+  // console.log(name);
 
   return (
     <MenuItem {...otherProps} ref={ref} onMouseOver={mouseOverEvent} onMouseLeave={mouseLeaveEvent}>

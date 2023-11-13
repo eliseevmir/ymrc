@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Link, useMatch } from 'react-router-dom';
 
 import ButtonBlack from '~/components/ButtonBlack';
 import ButtonOutlined from '~/components/ButtonOutlined';
@@ -30,9 +31,15 @@ const HeaderContent: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (pr
           промпредприятий»
         </p>
       </NameCenter>
-      <ButtonBlack type="button" color="secondary">
+      <Link to={'http://localhost:9001/'} target="_blank">
+        Enter crm
+      </Link>
+      <Link to={'http://localhost:9000/'} target="_blank">
+        Enter admin
+      </Link>
+      {/* <ButtonBlack type="button" color="secondary">
         Войти
-      </ButtonBlack>
+      </ButtonBlack> */}
       <ButtonOutlined type="button" color="secondary">
         Регистрация
       </ButtonOutlined>
