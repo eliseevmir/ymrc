@@ -9,9 +9,13 @@ import Footer from '~/components/Footer';
 import fragment, {
   TemplateHomeDesktopFragment$key,
 } from '~/relay/artifacts/TemplateHomeDesktopFragment.graphql';
+import headerMenuFragment, {
+  HeaderMenuFragment$key,
+} from '~/relay/artifacts/HeaderMenuFragment.graphql';
 
 interface Props {
   readonly fragmentRef: TemplateHomeDesktopFragment$key;
+  readonly headerMenuFragmentRef: HeaderMenuFragment$key;
 }
 
 const Container = styled.div`
@@ -30,7 +34,7 @@ const Slider = styled.div`
 `;
 
 const TemplateHomeDesktopFragment: React.FC<Props> = props => {
-  const { fragmentRef } = props;
+  const { fragmentRef, headerMenuFragmentRef } = props;
   const theme = useTheme();
   const { template } = useFragment<TemplateHomeDesktopFragment$key>(fragment, fragmentRef);
 
@@ -54,7 +58,7 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
         `}
       />
       {/* <Container> */}
-      <Header />
+      <Header fragmentRef={headerMenuFragmentRef} />
       <MainContainer>
         <Slider />
       </MainContainer>

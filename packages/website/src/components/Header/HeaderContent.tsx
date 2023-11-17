@@ -4,8 +4,15 @@ import { Link, useMatch } from 'react-router-dom';
 
 import ButtonBlack from '~/components/ButtonBlack';
 import ButtonOutlined from '~/components/ButtonOutlined';
+import Heading1 from '~/components/Heading1';
+import IconLogoEagle from '~/components/Icons/IconLogoEagle';
 
 type Props = React.HTMLAttributes<HTMLDivElement>;
+
+const LogoEagle = styled(IconLogoEagle)`
+  width: 10em;
+  height: auto;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -15,8 +22,8 @@ const Container = styled.div`
   margin-top: 20px;
 `;
 
-const NameCenter = styled.div`
-  display: flex;
+const Title = styled(Heading1)`
+  text-align: center;
 `;
 
 const HeaderContent: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (props, ref) => {
@@ -24,19 +31,17 @@ const HeaderContent: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (pr
 
   return (
     <Container {...otherProps} ref={ref}>
-      <NameCenter>
-        <div>LOGO</div>
-        <p>
-          ФБУН «Екатеринбургский Медицинский Научный Центр профилактики и охраны здоровья рабочих
-          промпредприятий»
-        </p>
-      </NameCenter>
+      <LogoEagle />
+      <Title>
+        ФБУН «Екатеринбургский Медицинский Научный Центр профилактики и охраны здоровья рабочих
+        промпредприятий»
+      </Title>
       <Link to={'http://localhost:9001/'} target="_blank">
         Enter crm
       </Link>
-      <Link to={'http://localhost:9000/'} target="_blank">
+      {/* <Link to={'http://localhost:9000/'} target="_blank">
         Enter admin
-      </Link>
+      </Link> */}
       {/* <ButtonBlack type="button" color="secondary">
         Войти
       </ButtonBlack> */}

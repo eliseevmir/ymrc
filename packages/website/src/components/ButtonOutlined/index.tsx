@@ -4,7 +4,7 @@ import ButtonUI, { ButtonProps } from '@via-profit/ui-kit/Button';
 
 const ButtonStyled = styled(ButtonUI)`
   border-radius: 0.7em;
-  padding: 0.7em 2em;
+  padding: 0.7em 1em;
 `;
 
 const ButtonOutlined: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (

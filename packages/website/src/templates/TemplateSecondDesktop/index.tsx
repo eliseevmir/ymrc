@@ -50,12 +50,14 @@ const TemplateSecondDesktopFragment: React.FC<Props> = props => {
           }
         `}
       />
+
       <Container>
         <Header />
         <Content>
           <TemplateSecondHeading fragmentRef={template} />
           <TemplateSecondContent fragmentRef={template} />
         </Content>
+        <div>second</div>
       </Container>
     </>
   );

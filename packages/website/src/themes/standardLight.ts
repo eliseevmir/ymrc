@@ -3,10 +3,10 @@ import type { UIThemeOverrides } from '@via-profit/ui-kit/ThemeProvider';
 const standardLight: UIThemeOverrides = {
   isDark: false,
   color: {
-    accentPrimary: '#E77B00',
-    accentSecondary: '#676767',
-    accentSecondaryContrast: '#F4F6FA',
-    textPrimary: '#2E1E1E',
+    accentPrimary: '#2D3A67',
+    accentSecondary: '#D86A43',
+    accentSecondaryContrast: '#52AC62',
+    textPrimary: '#000000',
     textSecondary: '#FFF',
   },
   myGradient: {

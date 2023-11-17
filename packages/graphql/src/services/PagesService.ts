@@ -36,6 +36,8 @@ import type {
   PagesServiceProps,
 } from 'webpages';
 
+import { MenuTableRecord } from 'webmenu';
+
 class PagesService implements PagesServiceInterface {
   #knex: PagesServiceProps['knex'];
 
@@ -84,6 +86,7 @@ class PagesService implements PagesServiceInterface {
     const request = this.#knex
       .select([
         'p.*',
+        this.#knex.raw('jsonb_agg(??) as ??', ['pagesMenu.*', 'menu']),
         this.#knex.raw('jsonb_agg(??) as ??', ['pagesMeta.*', 'meta']),
         this.#knex.raw('jsonb_agg(distinct ??) as ??', ['childsList.id', 'childs']),
         this.#knex.raw("case when count(cb.id) > 0 then jsonb_agg(??) else '[]'::jsonb end as ??", [
@@ -100,6 +103,7 @@ class PagesService implements PagesServiceInterface {
           PagesTableRecord & {
             readonly prev: string | null;
             readonly next: string | null;
+            readonly menu: ReadonlyArray<MenuTableRecord | null>;
             readonly meta: ReadonlyArray<PagesMetaTableRecord | null>;
             readonly childs: ReadonlyArray<string | null>;
             readonly contentBlocks: ReadonlyArray<string | null>;
@@ -109,6 +113,7 @@ class PagesService implements PagesServiceInterface {
       .leftJoin('pagesMeta', 'pagesMeta.page', 'p.id')
       .leftJoin({ cb: 'contentBlocks' }, 'cb.page', 'p.id')
       .leftJoin({ childsList: 'pagesList' }, 'childsList.pid', 'p.id');
+    // .leftJoin({ pm: 'pagesMenu' }, 'pm.name', 'Основное меню');
 
     if (cursor.orderBy) {
       cursor.orderBy.forEach(({ field, direction }) => {

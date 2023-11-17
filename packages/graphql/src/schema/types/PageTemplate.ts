@@ -7,11 +7,7 @@ import TemplateFallbackPage from '~/schema/templates/TemplateFallbackPage';
 
 const PageTemplate = new GraphQLUnionType({
   name: 'PageTemplate',
-  types: () => [
-    TemplateHomePage,
-    TemplateSecondPage,
-    TemplateFallbackPage,
-  ],
+  types: () => [TemplateHomePage, TemplateSecondPage, TemplateFallbackPage],
   resolveType: (template: TemplateType) => template.name,
 });
 

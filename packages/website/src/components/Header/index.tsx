@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { graphql, useQueryLoader } from 'react-relay';
 
 // import NavMenu from '~/components/AppMenu';
-import NavMenu from '~/components/NavMenu';
 import SafeFrame from '~/components/SafeFrame';
 import HeaderToolbar from '~/components/Header/HeaderToolbar';
 import HeaderContent from '~/components/Header/HeaderContent';
 import HeaderMenu from '~/components/HeaderMenu';
+import fragment, { HeaderMenuFragment$key } from '~/relay/artifacts/HeaderMenuFragment.graphql';
+// import headerMenuFragment, {
+//   HeaderMenuFragment$key,
+// } from '~/relay/artifacts/HeaderMenuFragment.graphql';
 
-export type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
+export type HeaderProps = React.HTMLAttributes<HTMLDivElement> & {
+  readonly fragmentRef: HeaderMenuFragment$key;
+};
 
 const Container = styled.header`
   background-color: ${({ theme }) => theme.color.backgroundPrimary.toString()};
@@ -35,15 +41,13 @@ const Inner = styled(SafeFrame)`
 `;
 
 const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (props, ref) => {
-  const { children, ...otherProps } = props;
+  const { children, fragmentRef, ...otherProps } = props;
 
   return (
     <Container {...otherProps} ref={ref}>
       <Inner>
         <HeaderContent />
-        {/* <NavMenu /> */}
-
-        <HeaderMenu />
+        <HeaderMenu fragmentRef={fragmentRef} />
         {/* <HeaderToolbar /> */}
         {children}
       </Inner>
@@ -52,3 +56,9 @@ const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (pro
 };
 
 export default React.forwardRef(Header);
+
+// graphql`
+//   query HeaderQuery on Query {
+//     menu
+//   }
+// `;

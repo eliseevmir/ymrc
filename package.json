@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently --raw \"npm run start:graphql\" \"npm run start:website\" \"npm run start:admin\" \"npm run start:crm\"",
+    "start": "concurrently --raw \"npm run start:graphql\" \"npm run start:website\"",
     "start:graphql": "npm run start --workspace packages/graphql",
     "start:website": "npm run start --workspace packages/website",
     "start:admin": "npm run start --workspace packages/admin",

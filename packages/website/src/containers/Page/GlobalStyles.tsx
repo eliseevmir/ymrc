@@ -22,7 +22,8 @@ const WebPageGlobalStyles: React.FC<Props> = props => {
         html {
           height: 100%;
           font-weight: 400;
-          font-family: system-ui;
+          /* font-family: system-ui; */
+          font-family: Arial, Times, sans-serif;
           font-size: var(--font-size-${fontSize});
         }
         body {

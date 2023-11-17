@@ -5,7 +5,7 @@ import ButtonContainer from '@via-profit/ui-kit/Button/ButtonContainer';
 
 const ButtonStyled = styled(ButtonUI)`
   border-radius: 0.7em;
-  padding: 0.7em 2em;
+  padding: 0.7em 1em;
 `;
 
 const Btn = styled(ButtonContainer)`

@@ -9,7 +9,7 @@ export type HeadingStyleProps = {
 };
 
 const Heading1 = styled(H1)<HeadingProps>`
-  font-size: 2.625em;
+  font-size: 1.5em;
   font-weight: 800;
 `;
 

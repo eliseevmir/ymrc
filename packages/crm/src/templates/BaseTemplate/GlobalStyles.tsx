@@ -27,7 +27,8 @@ const GlobalStyles: React.FC = () => {
           padding: 0;
           background-color: ${theme.color.backgroundPrimary.toString()};
           color: ${theme.color.textPrimary.toString()};
-          font-family: 'Open Sans', system-ui;
+          /* font-family: 'Open Sans', system-ui; */
+          font-family: Arial, Times, sans-serif;
           font-size: var(--font-size-${currentFontSize});
         }
 

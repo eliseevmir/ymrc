@@ -88,7 +88,12 @@ const Page: React.FC = () => {
 
     switch (true) {
       case t === 'TemplateHomePage' && isDesktop:
-        return <TemplateHomeDesktop fragmentRef={fragmentRef} />;
+        return (
+          <TemplateHomeDesktop
+            fragmentRef={fragmentRef}
+            headerMenuFragmentRef={pages.menu.edges[0].node}
+          />
+        );
 
       case t === 'TemplateHomePage' && isMobile:
         return <TemplateHomeMobile fragmentRef={fragmentRef} />;
@@ -102,7 +107,7 @@ const Page: React.FC = () => {
       default:
         return <>No template</>;
     }
-  }, [template, isDesktop, fragmentRef, isMobile]);
+  }, [template?.__typename, isDesktop, fragmentRef, pages.menu.edges, isMobile]);
 
   return (
     <>
@@ -136,6 +141,14 @@ graphql`
         ...TemplateHomeMobileFragment @skip(if: $isDesktop)
         ...TemplateFallbackDesktopFragment
         ...TemplateSecondDesktopFragment
+      }
+
+      menu(first: 1) {
+        edges {
+          node {
+            ...HeaderMenuFragment
+          }
+        }
       }
     }
   }

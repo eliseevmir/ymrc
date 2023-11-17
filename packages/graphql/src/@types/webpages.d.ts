@@ -17,8 +17,7 @@ declare module 'webpages' {
     | 'TemplateHomePage'
     | 'TemplateSecondPage'
     | 'TemplateFallbackPage'
-    | 'TemplateBlogPage'
-    | 'TemplateBlogPostPage';
+    | 'TemplateConferencePage';
 
   export interface Page {
     readonly id: string;

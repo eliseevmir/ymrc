@@ -13,6 +13,7 @@ import type { ContentBlock as ContentBlockType, PageParent, TemplateParent } fro
 import PageMeta from '~/schema/types/PageMeta';
 import PageTemplate from '~/schema/types/PageTemplate';
 import ContentBlock from '~/schema/unions/ContentBlock';
+import PageMenu from '~/schema/types/PageMenu';
 
 const Page = new GraphQLObjectType<PageParent, Context>({
   name: 'Page',
@@ -116,6 +117,13 @@ const Page = new GraphQLObjectType<PageParent, Context>({
           });
 
           return childsList;
+        },
+      },
+
+      pageMenu: {
+        type: new GraphQLNonNull(PageMenu),
+        resolve: (parent, args, context) => {
+          console.log('par111:', parent);
         },
       },
     };

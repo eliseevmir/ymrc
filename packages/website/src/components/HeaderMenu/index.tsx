@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 import { graphql, useFragment } from 'react-relay';
 
 import RootItem from '~/components/HeaderMenu/RootItem';
-// import fragment, { HeaderMenuFragment$key } from '~/relay/artifacts/HeaderMenuFragment.graphql';
+import fragment, { HeaderMenuFragment$key } from '~/relay/artifacts/HeaderMenuFragment.graphql';
 
 export interface HeaderMenuProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
-  // readonly fragmentRef: HeaderMenuFragment$key;
+  readonly fragmentRef: HeaderMenuFragment$key;
 }
 
 const Nav = styled.nav`
@@ -27,129 +27,126 @@ const HeaderMenu: React.ForwardRefRenderFunction<HTMLUListElement, HeaderMenuPro
   props,
   ref,
 ) => {
-  const {
-    // fragmentRef,
-    ...otherProps
-  } = props;
-  // const menu = useFragment<HeaderMenuFragment$key>(fragment, fragmentRef);
+  const { fragmentRef, ...otherProps } = props;
+  const menu = useFragment<HeaderMenuFragment$key>(fragment, fragmentRef);
 
-  const items = [
-    {
-      id: '55b30270-ec2e-43b7-ae62-8a7c015ed1c2',
-      url: '/',
-      page: {
-        id: '',
-        name: '',
-        path: '',
-      },
-      target: 'SELF',
-      childs: null,
-      name: 'О центре',
-      parent: { id: '' },
-    },
-    {
-      id: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
-      url: '/',
-      page: {
-        id: '',
-        name: '',
-        path: '',
-      },
-      target: 'SELF',
-      childs: [
-        {
-          id: '55b30270-ec2e-43b7-ae62-8a7c033ed1c2',
-          url: '/',
-          page: {
-            id: '',
-            name: '',
-            path: '',
-          },
-          target: 'SELF',
-          childs: null,
-          name: 'Медицинская',
-          parent: { id: '' },
-        },
-        {
-          id: '55b30270-ec2e-55b7-ae62-8a7c033ed1c2',
-          url: '/',
-          page: {
-            id: '',
-            name: '',
-            path: '',
-          },
-          target: 'SELF',
-          childs: null,
-          name: 'Научная',
-          parent: { id: '' },
-        },
-        {
-          id: '88b30270-ec2e-55b7-ae62-8a7c033ed1c2',
-          url: '/',
-          page: {
-            id: '',
-            name: '',
-            path: '',
-          },
-          target: 'SELF',
-          childs: null,
-          name: 'Образовательная',
-          parent: { id: '' },
-        },
-      ],
+  // const items = [
+  //   {
+  //     id: '55b30270-ec2e-43b7-ae62-8a7c015ed1c2',
+  //     url: '/',
+  //     page: {
+  //       id: '',
+  //       name: '',
+  //       path: '',
+  //     },
+  //     target: 'SELF',
+  //     childs: null,
+  //     name: 'О центре',
+  //     parent: { id: '' },
+  //   },
+  //   {
+  //     id: '55b30270-ec2e-43b7-ae62-8a7c022ed1c2',
+  //     url: '/',
+  //     page: {
+  //       id: '',
+  //       name: '',
+  //       path: '',
+  //     },
+  //     target: 'SELF',
+  //     childs: [
+  //       {
+  //         id: '55b30270-ec2e-43b7-ae62-8a7c033ed1c2',
+  //         url: '/',
+  //         page: {
+  //           id: '',
+  //           name: '',
+  //           path: '',
+  //         },
+  //         target: 'SELF',
+  //         childs: null,
+  //         name: 'Медицинская',
+  //         parent: { id: '' },
+  //       },
+  //       {
+  //         id: '55b30270-ec2e-55b7-ae62-8a7c033ed1c2',
+  //         url: '/',
+  //         page: {
+  //           id: '',
+  //           name: '',
+  //           path: '',
+  //         },
+  //         target: 'SELF',
+  //         childs: null,
+  //         name: 'Научная',
+  //         parent: { id: '' },
+  //       },
+  //       {
+  //         id: '88b30270-ec2e-55b7-ae62-8a7c033ed1c2',
+  //         url: '/',
+  //         page: {
+  //           id: '',
+  //           name: '',
+  //           path: '',
+  //         },
+  //         target: 'SELF',
+  //         childs: null,
+  //         name: 'Образовательная',
+  //         parent: { id: '' },
+  //       },
+  //     ],
 
-      name: 'Деятельность',
-      parent: { id: '' },
-    },
-    {
-      id: '55b30275-ec2e-45b7-ae62-8a7c015ed1c2',
-      url: '/',
-      page: {
-        id: '',
-        name: '',
-        path: '',
-      },
-      target: 'SELF',
-      childs: null,
-      name: 'Услуги',
-      parent: { id: '' },
-    },
-    {
-      id: '55b30370-ec2e-45b7-ae62-8a7c015ed1c2',
-      url: '/',
-      page: {
-        id: '',
-        name: '',
-        path: '',
-      },
-      target: 'SELF',
-      childs: null,
-      name: 'ОСМУиС',
-      parent: { id: '' },
-    },
-    {
-      id: '12b30270-ec2e-45b7-ae62-8a7c015ed1c2',
-      name: 'Контакты',
-      page: {
-        id: '',
-        name: '',
-        path: '',
-      },
-      target: 'SELF',
-      parent: { id: '' },
-      url: '/',
-      childs: null,
-    },
-  ];
+  //     name: 'Деятельность',
+  //     parent: { id: '' },
+  //   },
+  //   {
+  //     id: '55b30275-ec2e-45b7-ae62-8a7c015ed1c2',
+  //     url: '/',
+  //     page: {
+  //       id: '',
+  //       name: '',
+  //       path: '',
+  //     },
+  //     target: 'SELF',
+  //     childs: null,
+  //     name: 'Услуги',
+  //     parent: { id: '' },
+  //   },
+  //   {
+  //     id: '55b30370-ec2e-45b7-ae62-8a7c015ed1c2',
+  //     url: '/',
+  //     page: {
+  //       id: '',
+  //       name: '',
+  //       path: '',
+  //     },
+  //     target: 'SELF',
+  //     childs: null,
+  //     name: 'ОСМУиС',
+  //     parent: { id: '' },
+  //   },
+  //   {
+  //     id: '12b30270-ec2e-45b7-ae62-8a7c015ed1c2',
+  //     name: 'Контакты',
+  //     page: {
+  //       id: '',
+  //       name: '',
+  //       path: '',
+  //     },
+  //     target: 'SELF',
+  //     parent: { id: '' },
+  //     url: '/',
+  //     childs: null,
+  //   },
+  // ];
 
   return (
     <Nav {...otherProps} ref={ref}>
-      {/* <Menu>{menu?.items?.map(item => <RootItem key={item.id} item={item} />)}</Menu> */}
-      <Menu>
+      <Menu>{menu?.items?.map(item => <RootItem key={item.id} item={item} />)}</Menu>
+      {/* <Menu>
         {items.map(item => (
           <RootItem key={item.id} item={item} />
         ))}
-      </Menu>
+      </Menu> */}
     </Nav>
   );
 };
@@ -203,6 +200,42 @@ graphql`
     }
   }
 `;
+
+/*
+ {
+      id: crypto.randomUUID(),
+      pid: null,
+      path: '/medical-activity',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      template: getTemplateIDByTemplateName('TemplateSecondPage'),
+      name: 'Медицинская деятельность ',
+      order: 0,
+      statusCode: 200,
+    },
+    {
+      id: crypto.randomUUID(),
+      pid: null,
+      path: '/educational-activities',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      template: getTemplateIDByTemplateName('TemplateSecondPage'),
+      name: 'Образовательная деятельность',
+      order: 0,
+      statusCode: 200,
+    },
+    {
+      id: crypto.randomUUID(),
+      pid: null,
+      path: '/scientific-activity',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      template: getTemplateIDByTemplateName('TemplateSecondPage'),
+      name: 'Научная деятельность',
+      order: 0,
+      statusCode: 200,
+    },
+*/
 
 /*
  readonly items: ReadonlyArray<{

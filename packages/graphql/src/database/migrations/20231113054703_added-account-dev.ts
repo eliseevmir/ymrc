@@ -1,4 +1,3 @@
-import crypto from 'node:crypto';
 import bcryptjs from 'bcryptjs';
 import type { Knex } from 'knex';
 import type {
@@ -66,5 +65,5 @@ export async function down(knex: Knex): Promise<void> {
   await knex('accounts').del();
   await knex('users').del();
   await knex('role2privileges').del();
-  await knex('account2rolesdel').del();
+  await knex('account2roles').del();
 }

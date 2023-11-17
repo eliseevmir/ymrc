@@ -50,14 +50,14 @@ const TemplateFallbackDesktopFragment: React.FC<Props> = props => {
             color: ${theme.color.textPrimary.toString()};
           }
         `}
-      />
-      <Container>
+      /> Error 404
+      {/* <Container>
         <Header />
         <Content>
           <TemplateFallbackHeading fragmentRef={template} />
           <TemplateFallbackContent fragmentRef={template} />
         </Content>
-      </Container>
+      </Container> */}
     </>
   );
 };
