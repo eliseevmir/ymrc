@@ -493,6 +493,7 @@ type Page implements Node {
   statusCode: Int!
   parent: Page
   childs: [Page!]
+  pageMenus: [PageMenu!]
 }
 
 union PageTemplate = TemplateHomePage | TemplateSecondPage | TemplateFallbackPage
@@ -617,6 +618,37 @@ type PageMeta {
   page: Page!
 }
 
+type PageMenu implements Node {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  items: [PageMenuItem!]
+}
+
+type PageMenuItem implements Node {
+  id: ID!
+  order: Int!
+  visible: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  target: PageWindowTarget!
+  url: URL
+  name: String
+  parent: PageMenuItem
+  menu: PageMenu
+  page: Page
+  childs: [PageMenuItem!]
+}
+
+enum PageWindowTarget {
+  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
+  SELF
+
+  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
+  BLANK
+}
+
 input BlocksOrderBy {
   field: BlockOrderField!
   direction: OrderDirection!
@@ -668,37 +700,6 @@ type PagesMenuConnection implements Connection {
 type PageMenuEdge implements Edge {
   cursor: String!
   node: PageMenu!
-}
-
-type PageMenu implements Node {
-  id: ID!
-  name: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  items: [PageMenuItem!]
-}
-
-type PageMenuItem implements Node {
-  id: ID!
-  order: Int!
-  visible: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  target: PageWindowTarget!
-  url: URL
-  name: String
-  parent: PageMenuItem
-  menu: PageMenu
-  page: Page
-  childs: [PageMenuItem!]
-}
-
-enum PageWindowTarget {
-  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
-  SELF
-
-  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
-  BLANK
 }
 
 input PageMenuSearch {

@@ -63,6 +63,8 @@ const Page: React.FC = () => {
   const { pages } = useLazyLoadQuery<PageQuery>(query, {
     path: pathname,
     isDesktop,
+    // first: 10,
+    // search: [{ field: NAME, query: 'Основное меню' }],
     // firstPost: 10,
     // afterPost: null,
   });
@@ -88,12 +90,7 @@ const Page: React.FC = () => {
 
     switch (true) {
       case t === 'TemplateHomePage' && isDesktop:
-        return (
-          <TemplateHomeDesktop
-            fragmentRef={fragmentRef}
-            headerMenuFragmentRef={pages.menu.edges[0].node}
-          />
-        );
+        return <TemplateHomeDesktop fragmentRef={fragmentRef} />;
 
       case t === 'TemplateHomePage' && isMobile:
         return <TemplateHomeMobile fragmentRef={fragmentRef} />;
@@ -107,7 +104,7 @@ const Page: React.FC = () => {
       default:
         return <>No template</>;
     }
-  }, [template?.__typename, isDesktop, fragmentRef, pages.menu.edges, isMobile]);
+  }, [template?.__typename, isDesktop, fragmentRef, isMobile]);
 
   return (
     <>
@@ -141,14 +138,6 @@ graphql`
         ...TemplateHomeMobileFragment @skip(if: $isDesktop)
         ...TemplateFallbackDesktopFragment
         ...TemplateSecondDesktopFragment
-      }
-
-      menu(first: 1) {
-        edges {
-          node {
-            ...HeaderMenuFragment
-          }
-        }
       }
     }
   }

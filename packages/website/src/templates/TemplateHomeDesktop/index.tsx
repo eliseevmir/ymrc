@@ -5,17 +5,15 @@ import { graphql, useFragment } from 'react-relay';
 
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
+import HeaderMenu from '~/components/HeaderMenu';
+
 // import Slider from '~/components/Slider';
 import fragment, {
   TemplateHomeDesktopFragment$key,
 } from '~/relay/artifacts/TemplateHomeDesktopFragment.graphql';
-import headerMenuFragment, {
-  HeaderMenuFragment$key,
-} from '~/relay/artifacts/HeaderMenuFragment.graphql';
 
 interface Props {
   readonly fragmentRef: TemplateHomeDesktopFragment$key;
-  readonly headerMenuFragmentRef: HeaderMenuFragment$key;
 }
 
 const Container = styled.div`
@@ -34,9 +32,12 @@ const Slider = styled.div`
 `;
 
 const TemplateHomeDesktopFragment: React.FC<Props> = props => {
-  const { fragmentRef, headerMenuFragmentRef } = props;
+  const { fragmentRef } = props;
   const theme = useTheme();
-  const { template } = useFragment<TemplateHomeDesktopFragment$key>(fragment, fragmentRef);
+  const { template, pageMenus } = useFragment<TemplateHomeDesktopFragment$key>(
+    fragment,
+    fragmentRef,
+  );
 
   if (template?.__typename !== 'TemplateHomePage') {
     return null;
@@ -58,7 +59,7 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
         `}
       />
       {/* <Container> */}
-      <Header fragmentRef={headerMenuFragmentRef} />
+      <Header>{pageMenus && <HeaderMenu fragmentRef={pageMenus[0]} />}</Header>
       <MainContainer>
         <Slider />
       </MainContainer>
@@ -82,5 +83,16 @@ graphql`
         # ...TemplateHomeSliderFragment
       }
     }
+    pageMenus {
+      ...HeaderMenuFragment
+    }
+    #     pageMenus {
+    #  on HeaderMenu {
+    #   ...HeaderMenuFragment
+    # }
+    #   #  on FooterMenu {
+    #   ...HeaderMenuFragment
+    # }
+    # }
   }
 `;

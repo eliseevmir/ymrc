@@ -117,6 +117,7 @@ declare module 'webmenu' {
   export interface MenuServiceInterface {
     getMenuConnection(props: MenuConnectionProps): Promise<CursorConnection<Menu>>;
     getMenuItemsConnection(props: MenuItemConnectionProps): Promise<CursorConnection<MenuItem>>;
+    // getMenuList(): Promise<CursorConnection<Menu>>;
   }
 
   interface MenuService extends MenuServiceInterface {}

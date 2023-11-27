@@ -120,12 +120,16 @@ const Page = new GraphQLObjectType<PageParent, Context>({
         },
       },
 
-      pageMenu: {
-        type: new GraphQLNonNull(PageMenu),
-        resolve: (parent, args, context) => {
-          console.log('par111:', parent);
-        },
-      },
+      // pageMenus: {}  //// Type Union   HeaderMenu  FooterMenu ....
+
+      // pageMenus: {
+      //   type: new GraphQLList(new GraphQLNonNull(PageMenu)),
+      //   resolve: async (_parent, _args, context) => {
+      //     const { services } = context;
+
+      //     return (await services.webmenu.getMenuList()).edges.map(e => e.node);
+      //   },
+      // },
     };
 
     return fields;

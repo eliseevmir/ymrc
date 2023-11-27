@@ -129,7 +129,7 @@ const HeaderMenu: React.ForwardRefRenderFunction<HTMLUListElement, HeaderMenuPro
   //     name: 'Контакты',
   //     page: {
   //       id: '',
-  //       name: '',
+  //       name: '',HeaderMenu
   //       path: '',
   //     },
   //     target: 'SELF',

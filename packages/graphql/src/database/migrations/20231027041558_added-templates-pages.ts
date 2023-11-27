@@ -8,7 +8,8 @@ export async function up(knex: Knex): Promise<void> {
     {
       id: crypto.randomUUID(),
       name: 'TemplateHomePage',
-      displayName: 'Шаблон главной страницы',
+      displayName: 'Main page template',
+      // displayName: 'Шаблон главной страницы',
     },
     {
       id: crypto.randomUUID(),

@@ -129,6 +129,10 @@ class MenuService implements MenuServiceInterface {
     };
   }
 
+  // public async getMenuList() {
+  //   return await this.getMenuConnection({ first: 10 });
+  // }
+
   public async getMenuItemsConnection(
     props: MenuItemConnectionProps,
   ): Promise<CursorConnection<MenuItem>> {

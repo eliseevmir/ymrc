@@ -7,14 +7,11 @@ import SafeFrame from '~/components/SafeFrame';
 import HeaderToolbar from '~/components/Header/HeaderToolbar';
 import HeaderContent from '~/components/Header/HeaderContent';
 import HeaderMenu from '~/components/HeaderMenu';
-import fragment, { HeaderMenuFragment$key } from '~/relay/artifacts/HeaderMenuFragment.graphql';
 // import headerMenuFragment, {
 //   HeaderMenuFragment$key,
 // } from '~/relay/artifacts/HeaderMenuFragment.graphql';
 
-export type HeaderProps = React.HTMLAttributes<HTMLDivElement> & {
-  readonly fragmentRef: HeaderMenuFragment$key;
-};
+export type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
 const Container = styled.header`
   background-color: ${({ theme }) => theme.color.backgroundPrimary.toString()};
@@ -41,15 +38,17 @@ const Inner = styled(SafeFrame)`
 `;
 
 const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (props, ref) => {
-  const { children, fragmentRef, ...otherProps } = props;
+  const { children, ...otherProps } = props;
+
+  ///////fragment
 
   return (
     <Container {...otherProps} ref={ref}>
       <Inner>
         <HeaderContent />
-        <HeaderMenu fragmentRef={fragmentRef} />
-        {/* <HeaderToolbar /> */}
         {children}
+        {/* <HeaderMenu /> */}
+        {/* <HeaderToolbar /> */}
       </Inner>
     </Container>
   );
