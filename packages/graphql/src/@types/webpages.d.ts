@@ -2,6 +2,7 @@ declare module 'webpages' {
   import type { Knex } from 'knex';
   import type { Middleware, CursorConnection } from '@via-profit-services/core';
   import type FilesService from '~/services/FilesService';
+  import { MenuTableRecord } from 'webmenu';
 
   export type JSONValue =
     | string
@@ -17,7 +18,7 @@ declare module 'webpages' {
     | 'TemplateHomePage'
     | 'TemplateSecondPage'
     | 'TemplateFallbackPage'
-    | 'TemplateConferencePage';
+    | 'TemplateConferencesPage';
 
   export interface Page {
     readonly id: string;
@@ -32,6 +33,7 @@ declare module 'webpages' {
     readonly template: string;
     readonly meta: PageMeta;
     readonly contentBlocks: readonly string[];
+    readonly menus: readonly string[];
   }
 
   export type PageParent = Page;

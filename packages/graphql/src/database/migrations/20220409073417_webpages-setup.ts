@@ -1,7 +1,7 @@
 import type { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  await knex.raw(/* SQL */ `
+  await knex.raw(/*sql*/ `
     create type "pageWindowTarget" as enum (
       'SELF',
       'BLANK'
@@ -120,9 +120,20 @@ export async function up(knex: Knex): Promise<void> {
       "target" "pageWindowTarget" null default 'SELF'::"pageWindowTarget",
       "url" character varying(255) null
     );
+
+
+    create table if not exists "menu2template" (
+      "menu" uuid not null,
+      "template" uuid not null
+    );
+
     alter table "pagesMenuItems" add constraint "pagesMenuItems_pk" primary key("id");
     alter table "pagesMenuItems" add constraint "pagesMenuItems_fk_pid" foreign key ("pid") references "pagesMenuItems"("id") on update cascade on delete cascade;
     alter table "pagesMenuItems" add constraint "pagesMenuItems_fk_menu" foreign key ("menu") references "pagesMenu"("id") on update cascade on delete cascade;
+
+    alter table "menu2template" add constraint "menu2template_fk_tpl" foreign key ("template") references "templates"("id") on update cascade on delete cascade;
+    alter table "menu2template" add constraint "menu2template_fk_menu" foreign key ("menu") references "pagesMenu"("id") on update cascade on delete cascade;
+
   `);
 }
 
@@ -137,6 +148,7 @@ export async function down(knex: Knex): Promise<void> {
     drop table if exists "contentBlockFormattedText" cascade;
     drop table if exists "contentBlockImage" cascade;
     drop table if exists "templates" cascade;
+    drop table if exists "menu2template" cascade;
     drop type if exists "contentBlockType" cascade;
     drop type if exists "pagesMenuItems" cascade;
     drop type if exists "pageWindowTarget" cascade;

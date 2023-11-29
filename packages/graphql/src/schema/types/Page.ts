@@ -10,6 +10,7 @@ import {
 import { NodeInterfaceType, DateTimeScalarType, Context } from '@via-profit-services/core';
 
 import type { ContentBlock as ContentBlockType, PageParent, TemplateParent } from 'webpages';
+import { MenuTableRecord } from 'webmenu';
 import PageMeta from '~/schema/types/PageMeta';
 import PageTemplate from '~/schema/types/PageTemplate';
 import ContentBlock from '~/schema/unions/ContentBlock';
@@ -120,14 +121,30 @@ const Page = new GraphQLObjectType<PageParent, Context>({
         },
       },
 
-      // pageMenus: {}  //// Type Union   HeaderMenu  FooterMenu ....
+      // headerMenu: {
+      //   type: PageMenu,
+      //   resolve: async (parent, _arg, context) => {
+      //     const { dataloader } = context;
 
-      // pageMenus: {
-      //   type: new GraphQLList(new GraphQLNonNull(PageMenu)),
-      //   resolve: async (_parent, _args, context) => {
-      //     const { services } = context;
+      //     const data = await dataloader.menus
+      //       .loadMany(parent.menus)
+      //       .then(list => list.filter((cb): cb is MenuTableRecord => !(cb instanceof Error)));
+      //     const menu = data.find(d => d.name === 'Main menu') || null;
 
-      //     return (await services.webmenu.getMenuList()).edges.map(e => e.node);
+      //     return menu;
+      //   },
+      // },
+
+      // footerMenu: {
+      //   type: PageMenu,
+      //   resolve: async (parent, _arg, context) => {
+      //     const { dataloader } = context;
+
+      //     const data = await dataloader.menus
+      //       .loadMany(parent.menus)
+      //       .then(list => list.filter((cb): cb is MenuTableRecord => !(cb instanceof Error)));
+
+      //     return data.find(d => d.name === 'Footer menu') || null;
       //   },
       // },
     };

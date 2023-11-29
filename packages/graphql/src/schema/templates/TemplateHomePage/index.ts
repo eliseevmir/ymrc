@@ -15,6 +15,7 @@ import ContentBlockPlainText from '~/schema/types/ContentBlockPlainText';
 import Page from '~/schema/types/Page';
 import TemplateName from '~/schema/enums/TemplateName';
 import { SliderSlidesTableRecord } from 'slider';
+import PageMenu from '~/schema/types/PageMenu';
 
 const TemplateHomePage = new GraphQLObjectType<TemplateParent, Context>({
   name: 'TemplateHomePage',
@@ -85,6 +86,18 @@ const TemplateHomePage = new GraphQLObjectType<TemplateParent, Context>({
           }
 
           return null;
+        },
+      },
+
+      menu: {
+        type: PageMenu,
+        resolve: async (parent, _arg, context) => {
+          const { dataloader } = context;
+          const { page: pageID } = parent;
+
+          const data = await dataloader.webpages.load(pageID);
+
+          const a = data;
         },
       },
     };

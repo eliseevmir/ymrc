@@ -40,8 +40,6 @@ const Inner = styled(SafeFrame)`
 const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (props, ref) => {
   const { children, ...otherProps } = props;
 
-  ///////fragment
-
   return (
     <Container {...otherProps} ref={ref}>
       <Inner>
@@ -55,9 +53,3 @@ const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (pro
 };
 
 export default React.forwardRef(Header);
-
-// graphql`
-//   query HeaderQuery on Query {
-//     menu
-//   }
-// `;

@@ -17,6 +17,16 @@ declare module 'webmenu' {
     readonly updatedAt: Date;
   }
 
+  export interface Menu2TemplateTableModel {
+    readonly menu: string;
+    readonly template: string;
+  }
+
+  export interface Menu2TemplateTableRecord {
+    readonly menu: string;
+    readonly template: string;
+  }
+
   export interface MenuItemTableModel {
     readonly id: string;
     readonly createdAt: string;

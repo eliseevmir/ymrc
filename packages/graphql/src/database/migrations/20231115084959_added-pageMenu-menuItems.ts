@@ -1,15 +1,16 @@
 import { Knex } from 'knex';
 import crypto from 'crypto';
 
-import { MenuTableModel, MenuItemTableModel } from 'webmenu';
-import { PagesTableModel } from 'webpages';
+import { MenuTableModel, MenuItemTableModel, Menu2TemplateTableModel } from 'webmenu';
+import { PagesTableModel, TemplatesTableModel } from 'webpages';
 
 export async function up(knex: Knex): Promise<void> {
   const pagesList = await knex.select('*').from<PagesTableModel>('pagesList');
+  const templates = await knex.select('*').from<TemplatesTableModel>('templates');
 
   const pageMenu: MenuTableModel = {
     id: crypto.randomUUID(),
-    name: 'Основное меню',
+    name: 'Main menu',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
@@ -34,8 +35,14 @@ export async function up(knex: Knex): Promise<void> {
     }
   });
 
+  const menu2templates: Menu2TemplateTableModel[] = templates.map(t => ({
+    menu: pageMenu.id,
+    template: t.id,
+  }));
+
   await knex('pagesMenu').insert(pageMenu);
   await knex('pagesMenuItems').insert(menuItems);
+  await knex('menu2template').insert(menu2templates);
 }
 
 export async function down(knex: Knex): Promise<void> {

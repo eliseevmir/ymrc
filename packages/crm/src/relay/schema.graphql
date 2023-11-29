@@ -493,10 +493,9 @@ type Page implements Node {
   statusCode: Int!
   parent: Page
   childs: [Page!]
-  pageMenus: [PageMenu!]
 }
 
-union PageTemplate = TemplateHomePage | TemplateSecondPage | TemplateFallbackPage
+union PageTemplate = TemplateHomePage | TemplateSecondPage | TemplateConferencePage | TemplateFallbackPage
 
 type TemplateHomePage implements PageTemplateInterface {
   id: ID!
@@ -508,6 +507,7 @@ type TemplateHomePage implements PageTemplateInterface {
   heading: ContentBlockPlainText
   payments: Payments
   slider: Slider
+  menu: PageMenu
 }
 
 interface PageTemplateInterface {
@@ -574,6 +574,37 @@ type ContentBlockImage implements ContentBlockInterface & Node {
   file: File!
 }
 
+type PageMenu implements Node {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  items: [PageMenuItem!]
+}
+
+type PageMenuItem implements Node {
+  id: ID!
+  order: Int!
+  visible: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  target: PageWindowTarget!
+  url: URL
+  name: String
+  parent: PageMenuItem
+  menu: PageMenu
+  page: Page
+  childs: [PageMenuItem!]
+}
+
+enum PageWindowTarget {
+  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
+  SELF
+
+  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
+  BLANK
+}
+
 type TemplateSecondPage implements PageTemplateInterface {
   id: ID!
   name: TemplateName!
@@ -585,6 +616,19 @@ type TemplateSecondPage implements PageTemplateInterface {
 
   """Page content"""
   content: ContentBlockLexical
+}
+
+type TemplateConferencePage implements PageTemplateInterface {
+  id: ID!
+  name: TemplateName!
+  displayName: String!
+  page: Page!
+
+  """Page H1 heading"""
+  heading: ContentBlockPlainText
+  payments: Payments
+  slider: Slider
+  menu: PageMenu
 }
 
 type TemplateFallbackPage implements PageTemplateInterface {
@@ -616,37 +660,6 @@ type PageMeta {
   """Meta tag <meta name="keywords" content="...">"""
   keywords: String @deprecated(reason: "Google and other search engines no longer consider the keywords meta tag")
   page: Page!
-}
-
-type PageMenu implements Node {
-  id: ID!
-  name: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  items: [PageMenuItem!]
-}
-
-type PageMenuItem implements Node {
-  id: ID!
-  order: Int!
-  visible: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  target: PageWindowTarget!
-  url: URL
-  name: String
-  parent: PageMenuItem
-  menu: PageMenu
-  page: Page
-  childs: [PageMenuItem!]
-}
-
-enum PageWindowTarget {
-  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
-  SELF
-
-  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
-  BLANK
 }
 
 input BlocksOrderBy {

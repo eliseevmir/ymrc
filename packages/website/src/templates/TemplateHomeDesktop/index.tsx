@@ -34,10 +34,7 @@ const Slider = styled.div`
 const TemplateHomeDesktopFragment: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { template, pageMenus } = useFragment<TemplateHomeDesktopFragment$key>(
-    fragment,
-    fragmentRef,
-  );
+  const { template } = useFragment<TemplateHomeDesktopFragment$key>(fragment, fragmentRef);
 
   if (template?.__typename !== 'TemplateHomePage') {
     return null;
@@ -59,7 +56,8 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
         `}
       />
       {/* <Container> */}
-      <Header>{pageMenus && <HeaderMenu fragmentRef={pageMenus[0]} />}</Header>
+      {/* <Header>{headerMenu && <HeaderMenu fragmentRef={headerMenu} />}</Header> */}
+      {/* <Header /> */}
       <MainContainer>
         <Slider />
       </MainContainer>
@@ -78,21 +76,18 @@ graphql`
       __typename
       ... on TemplateHomePage {
         id
+
         # ...TemplateHomeHeadingFragment
         # ...TemplateHomePaymentsFragment
         # ...TemplateHomeSliderFragment
       }
     }
-    pageMenus {
-      ...HeaderMenuFragment
-    }
-    #     pageMenus {
-    #  on HeaderMenu {
+
+    # headerMenu {
     #   ...HeaderMenuFragment
     # }
-    #   #  on FooterMenu {
+    # pageMenus {
     #   ...HeaderMenuFragment
-    # }
     # }
   }
 `;

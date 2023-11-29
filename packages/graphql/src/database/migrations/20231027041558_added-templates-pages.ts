@@ -9,22 +9,21 @@ export async function up(knex: Knex): Promise<void> {
       id: crypto.randomUUID(),
       name: 'TemplateHomePage',
       displayName: 'Main page template',
-      // displayName: 'Шаблон главной страницы',
     },
     {
       id: crypto.randomUUID(),
       name: 'TemplateSecondPage',
-      displayName: 'Шаблон вторичной страницы',
+      displayName: 'Second page template',
     },
     {
       id: crypto.randomUUID(),
-      name: 'TemplateConferencePage',
-      displayName: 'Шаблон конференции',
+      name: 'TemplateConferencesPage',
+      displayName: 'Conferences page template',
     },
     {
       id: crypto.randomUUID(),
       name: 'TemplateFallbackPage',
-      displayName: 'Шаблон 404',
+      displayName: '404 page template',
     },
   ];
 
@@ -75,7 +74,7 @@ export async function up(knex: Knex): Promise<void> {
       path: '/conferences',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      template: getTemplateIDByTemplateName('TemplateConferencePage'),
+      template: getTemplateIDByTemplateName('TemplateConferencesPage'),
       name: 'Конференции',
       order: 0,
       statusCode: 200,

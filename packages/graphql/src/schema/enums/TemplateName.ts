@@ -5,6 +5,7 @@ const TemplateName = new GraphQLEnumType({
   values: {
     TEMPLATE_HOME_PAGE: { value: 'TemplateHomePage' },
     TEMPLATE_SECOND_PAGE: { value: 'TemplateSecondPage' },
+    TEMPLATE_CONFERENCES_PAGE: { value: 'TemplateConferencesPage' },
     TEMPLATE_FALLBACK_PAGE: { value: 'TemplateFallbackPage' },
 
     TEMPLATE_BLOG_PAGE: { value: 'TemplateBlogPage' },
