@@ -29,6 +29,13 @@ const TemplateSecondDesktop = loadable(() => import('~/templates/TemplateSecondD
   fallback: <LoadingIndicator />,
 });
 
+const TemplateConferencesDesktop = loadable(
+  () => import('~/templates/TemplateConferencesDesktop/index'),
+  {
+    fallback: <LoadingIndicator />,
+  },
+);
+
 const TemplateFallbackDesktop = loadable(
   () => import('~/templates/TemplateFallbackDesktop/index'),
   {
@@ -97,6 +104,13 @@ const Page: React.FC = () => {
 
       case t === 'TemplateSecondPage':
         return <TemplateSecondDesktop fragmentRef={fragmentRef} />;
+
+      case t === 'TemplateConferencesPage':
+        return (
+          <TemplateConferencesDesktop
+          // fragmentRef={fragmentRef}
+          />
+        );
 
       case t === 'TemplateFallbackPage':
         return <TemplateFallbackDesktop fragmentRef={fragmentRef} />;
