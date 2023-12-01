@@ -495,7 +495,7 @@ type Page implements Node {
   childs: [Page!]
 }
 
-union PageTemplate = TemplateHomePage | TemplateSecondPage | TemplateConferencePage | TemplateFallbackPage
+union PageTemplate = TemplateHomePage | TemplateSecondPage | TemplateConferencesPage | TemplateFallbackPage
 
 type TemplateHomePage implements PageTemplateInterface {
   id: ID!
@@ -507,7 +507,7 @@ type TemplateHomePage implements PageTemplateInterface {
   heading: ContentBlockPlainText
   payments: Payments
   slider: Slider
-  menu: PageMenu
+  mainMenu: PageMenu
 }
 
 interface PageTemplateInterface {
@@ -522,6 +522,7 @@ interface PageTemplateInterface {
 enum TemplateName {
   TEMPLATE_HOME_PAGE
   TEMPLATE_SECOND_PAGE
+  TEMPLATE_CONFERENCES_PAGE
   TEMPLATE_FALLBACK_PAGE
   TEMPLATE_BLOG_PAGE
   TEMPLATE_BLOGPOST_PAGE
@@ -618,16 +619,11 @@ type TemplateSecondPage implements PageTemplateInterface {
   content: ContentBlockLexical
 }
 
-type TemplateConferencePage implements PageTemplateInterface {
+type TemplateConferencesPage implements PageTemplateInterface {
   id: ID!
   name: TemplateName!
   displayName: String!
   page: Page!
-
-  """Page H1 heading"""
-  heading: ContentBlockPlainText
-  payments: Payments
-  slider: Slider
   menu: PageMenu
 }
 

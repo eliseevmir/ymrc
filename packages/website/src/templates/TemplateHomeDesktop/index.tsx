@@ -56,7 +56,7 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
         `}
       />
       {/* <Container> */}
-      {/* <Header>{headerMenu && <HeaderMenu fragmentRef={headerMenu} />}</Header> */}
+      <Header>{template.mainMenu && <HeaderMenu fragmentRef={template.mainMenu} />}</Header>
       {/* <Header /> */}
       <MainContainer>
         <Slider />
@@ -77,6 +77,9 @@ graphql`
       ... on TemplateHomePage {
         id
 
+        mainMenu {
+          ...HeaderMenuFragment
+        }
         # ...TemplateHomeHeadingFragment
         # ...TemplateHomePaymentsFragment
         # ...TemplateHomeSliderFragment

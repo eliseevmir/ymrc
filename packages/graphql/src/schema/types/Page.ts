@@ -10,11 +10,10 @@ import {
 import { NodeInterfaceType, DateTimeScalarType, Context } from '@via-profit-services/core';
 
 import type { ContentBlock as ContentBlockType, PageParent, TemplateParent } from 'webpages';
-import { MenuTableRecord } from 'webmenu';
+import type { Menu } from 'webmenu';
 import PageMeta from '~/schema/types/PageMeta';
 import PageTemplate from '~/schema/types/PageTemplate';
 import ContentBlock from '~/schema/unions/ContentBlock';
-import PageMenu from '~/schema/types/PageMenu';
 
 const Page = new GraphQLObjectType<PageParent, Context>({
   name: 'Page',
@@ -25,7 +24,12 @@ const Page = new GraphQLObjectType<PageParent, Context>({
       template: {
         type: PageTemplate,
         resolve: async (parent, _args, context) => {
-          const { template: templateID, id, contentBlocks: pageBlocks } = parent;
+          const {
+            template: templateID,
+            id,
+            contentBlocks: pageBlocks,
+            menus: templateMenus,
+          } = parent;
           const { dataloader } = context;
 
           if (typeof templateID !== 'string') {
@@ -38,11 +42,16 @@ const Page = new GraphQLObjectType<PageParent, Context>({
             .loadMany(pageBlocks)
             .then(list => list.filter((cb): cb is ContentBlockType => !(cb instanceof Error)));
 
+          const menus = await dataloader.menus
+            .loadMany(templateMenus)
+            .then(list => list.filter((m): m is Menu => !(m instanceof Error)));
+
           const resolverPayload: TemplateParent = {
             ...template,
             __typename: template.name,
             page: id,
             contentBlocks,
+            menus,
           };
 
           return resolverPayload;
@@ -120,33 +129,6 @@ const Page = new GraphQLObjectType<PageParent, Context>({
           return childsList;
         },
       },
-
-      // headerMenu: {
-      //   type: PageMenu,
-      //   resolve: async (parent, _arg, context) => {
-      //     const { dataloader } = context;
-
-      //     const data = await dataloader.menus
-      //       .loadMany(parent.menus)
-      //       .then(list => list.filter((cb): cb is MenuTableRecord => !(cb instanceof Error)));
-      //     const menu = data.find(d => d.name === 'Main menu') || null;
-
-      //     return menu;
-      //   },
-      // },
-
-      // footerMenu: {
-      //   type: PageMenu,
-      //   resolve: async (parent, _arg, context) => {
-      //     const { dataloader } = context;
-
-      //     const data = await dataloader.menus
-      //       .loadMany(parent.menus)
-      //       .then(list => list.filter((cb): cb is MenuTableRecord => !(cb instanceof Error)));
-
-      //     return data.find(d => d.name === 'Footer menu') || null;
-      //   },
-      // },
     };
 
     return fields;

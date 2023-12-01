@@ -89,16 +89,9 @@ const TemplateHomePage = new GraphQLObjectType<TemplateParent, Context>({
         },
       },
 
-      menu: {
+      mainMenu: {
         type: PageMenu,
-        resolve: async (parent, _arg, context) => {
-          const { dataloader } = context;
-          const { page: pageID } = parent;
-
-          const data = await dataloader.webpages.load(pageID);
-
-          const a = data;
-        },
+        resolve: async parent => parent.menus.find(m => m.name === 'Main menu'),
       },
     };
 
