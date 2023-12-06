@@ -7,7 +7,9 @@ import { usePopper } from 'react-popper';
 import IconChevronDown from '~/components/Icons/IconChevronDown';
 import DropDownMenu from '~/components/HeaderMenu/DropDownMenu';
 import DropdownItem from '~/components/HeaderMenu/DropdownItem';
+import { useTranslations } from './translations';
 import { HeaderMenuFragment$data } from '~/relay/artifacts/HeaderMenuFragment.graphql';
+import { FormattedMessage } from 'react-intl';
 
 export type ItemLevel1 = NonNullable<NonNullable<HeaderMenuFragment$data['items']>>[0];
 
@@ -52,6 +54,7 @@ const RootItem: React.ForwardRefRenderFunction<HTMLLIElement, RootItemProps> = (
   const [referenceElement, setReferenceElement] = React.useState<HTMLAnchorElement | null>(null);
   const [popperElement, setPopperElement] = React.useState<HTMLDivElement | null>(null);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const { translatedMenuItems } = useTranslations();
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'bottom-start',
     modifiers: [
@@ -87,6 +90,9 @@ const RootItem: React.ForwardRefRenderFunction<HTMLLIElement, RootItemProps> = (
     setDropdownOpen(false);
   };
 
+  const namePage = page?.name || 'MENU';
+  const a = translatedMenuItems[namePage.toLowerCase()];
+
   return (
     <MenuItem {...otherProps} ref={ref} onMouseOver={mouseOverEvent} onMouseLeave={mouseLeaveEvent}>
       <ClassNames>
@@ -100,8 +106,14 @@ const RootItem: React.ForwardRefRenderFunction<HTMLLIElement, RootItemProps> = (
               ${isMatch !== null && itemStyleActive}
             `}
           >
+            {/* <FormattedMessage
+              {...(translatedMenuItems[namePage.toLowerCase()] || {
+                id: `2121321`,
+                defaultMessage: 'asdsad',
+              })}
+            /> */}
             <span>{name || page?.name}</span>
-            <span>{name}</span>
+            {/* <span>{name}</span> */}
             {childs && childs.length && <AngleIcon />}
           </ItemLink>
         )}
