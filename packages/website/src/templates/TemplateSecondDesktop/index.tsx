@@ -7,6 +7,8 @@ import { graphql, useFragment } from 'react-relay';
 import Header from '~/components/Header';
 import TemplateSecondHeading from './TemplateSecondHeading';
 import TemplateSecondContent from './TemplateSecondContent';
+import HeaderMenu from '~/components/HeaderMenu';
+import Footer from '~/components/Footer';
 import fragment, {
   TemplateSecondDesktopFragment$key,
 } from '~/relay/artifacts/TemplateSecondDesktopFragment.graphql';
@@ -21,7 +23,8 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
-const Content = styled.div`
+const MainContainer = styled.main`
+  min-height: 1000px;
   padding: 20px;
   flex: 1;
 `;
@@ -51,14 +54,15 @@ const TemplateSecondDesktopFragment: React.FC<Props> = props => {
         `}
       />
 
-      <Container>
-        <Header />
-        <Content>
-          <TemplateSecondHeading fragmentRef={template} />
-          <TemplateSecondContent fragmentRef={template} />
-        </Content>
-        <div>second</div>
-      </Container>
+      {/* <Container> */}
+      {/* <Header /> */}
+      <Header>{template.mainMenu && <HeaderMenu fragmentRef={template.mainMenu} />}</Header>
+      <MainContainer>
+        {/* <TemplateSecondHeading fragmentRef={template} />
+          <TemplateSecondContent fragmentRef={template} /> */}
+      </MainContainer>
+      {/* </Container> */}
+      <Footer />
     </>
   );
 };
@@ -73,6 +77,9 @@ graphql`
       ... on TemplateSecondPage {
         ...TemplateSecondHeading
         ...TemplateSecondContent
+        mainMenu {
+          ...HeaderMenuFragment
+        }
       }
     }
   }

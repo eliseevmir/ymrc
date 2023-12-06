@@ -17,7 +17,10 @@ export async function up(knex: Knex): Promise<void> {
 
   const menuItems: MenuItemTableModel[] = [];
 
-  pagesList.forEach(page => {
+  const pageItemsParent: PagesTableModel[] = pagesList.filter(pl => pl.pid === null);
+  const pageItemsChild: PagesTableModel[] = pagesList.filter(pl => pl.pid !== null);
+
+  pageItemsParent.forEach(page => {
     if (page.path !== '/' && page.path !== '/404') {
       menuItems.push({
         id: crypto.randomUUID(),
@@ -29,11 +32,48 @@ export async function up(knex: Knex): Promise<void> {
         page: page.id,
         url: null,
         visible: true,
-        order: 1,
+        order: page.order,
         target: 'SELF',
       });
     }
   });
+
+  pageItemsChild.forEach(page => {
+    const parent = menuItems.find(mItems => mItems.page === page.pid);
+    // if (page.path !== '/' && page.path !== '/404') {
+    menuItems.push({
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      pid: parent ? parent.id : null,
+      name: null,
+      menu: pageMenu.id,
+      page: page.id,
+      url: null,
+      visible: true,
+      order: page.order,
+      target: 'SELF',
+    });
+    // }
+  });
+
+  // pagesList.forEach(page => {
+  //   if (page.path !== '/' && page.path !== '/404') {
+  //     menuItems.push({
+  //       id: crypto.randomUUID(),
+  //       createdAt: new Date().toISOString(),
+  //       updatedAt: new Date().toISOString(),
+  //       pid: null,
+  //       name: null,
+  //       menu: pageMenu.id,
+  //       page: page.id,
+  //       url: null,
+  //       visible: true,
+  //       order: page.order,
+  //       target: 'SELF',
+  //     });
+  //   }
+  // });
 
   const menu2templates: Menu2TemplateTableModel[] = templates.map(t => ({
     menu: pageMenu.id,

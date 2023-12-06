@@ -7,6 +7,7 @@ import ContentBlockPlainText from '~/schema/types/ContentBlockPlainText';
 import ContentBlockLexical from '~/schema/types/ContentBlockLexical';
 import Page from '~/schema/types/Page';
 import TemplateName from '~/schema/enums/TemplateName';
+import PageMenu from '~/schema/types/PageMenu';
 
 const TemplateSecondPage = new GraphQLObjectType<TemplateParent, Context>({
   name: 'TemplateSecondPage',
@@ -37,6 +38,10 @@ const TemplateSecondPage = new GraphQLObjectType<TemplateParent, Context>({
       type: ContentBlockLexical,
       description: 'Page content',
       resolve: parent => parent.contentBlocks.find(cb => cb.name === 'page:content'),
+    },
+    mainMenu: {
+      type: PageMenu,
+      resolve: async parent => parent.menus.find(m => m.name === 'Main menu'),
     },
   }),
 });

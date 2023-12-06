@@ -21,21 +21,21 @@ const MenuItem = styled.li`
 
 const ItemLink = styled(Link)`
   padding: 0.8em 0.8em;
-  color: #333;
+  color: ${({ theme }) => theme.color.accentPrimary.toString()};
   text-decoration: none;
   display: flex;
   flex: 1;
   align-items: center;
   transition: color 120ms ease-out;
   &:hover {
-    color: rgba(240, 0, 0, 0.432);
+    color: rgba(216, 106, 67, 1);
   }
 `;
 
 const itemStyleActive = css`
-  color: rgba(240, 0, 0, 0.432);
+  color: rgba(216, 106, 67, 1);
   &:hover {
-    color: rgba(240, 0, 0, 0.432);
+    color: rgba(216, 106, 67, 1);
   }
 `;
 
@@ -101,6 +101,7 @@ const RootItem: React.ForwardRefRenderFunction<HTMLLIElement, RootItemProps> = (
             `}
           >
             <span>{name || page?.name}</span>
+            <span>{name}</span>
             {childs && childs.length && <AngleIcon />}
           </ItemLink>
         )}

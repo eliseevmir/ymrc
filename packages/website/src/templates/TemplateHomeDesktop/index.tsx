@@ -57,7 +57,6 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
       />
       {/* <Container> */}
       <Header>{template.mainMenu && <HeaderMenu fragmentRef={template.mainMenu} />}</Header>
-      {/* <Header /> */}
       <MainContainer>
         <Slider />
       </MainContainer>

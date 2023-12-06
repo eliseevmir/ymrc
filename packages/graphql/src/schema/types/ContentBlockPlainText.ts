@@ -8,6 +8,7 @@ import {
 import { Context, NodeInterfaceType, DateTimeScalarType } from '@via-profit-services/core';
 
 import type { ContentBlockBase, ContentBlockPlainTextPayload, TemplateParent } from 'webpages';
+import type { Menu } from 'webmenu';
 import ContentBlockInterface from '~/schema/interfaces/ContentBlockInterface';
 import ContentBlockType from '~/schema/enums/ContentBlockType';
 import Page from '~/schema/types/Page';
@@ -45,11 +46,16 @@ export const contentBlockPlainTextFields: Record<
 
       const template = await dataloader.templates.load(templateID);
 
+      const menus = await dataloader.menus
+        .loadMany(page.menus)
+        .then(list => list.filter((m): m is Menu => !(m instanceof Error)));
+
       const payload: TemplateParent = {
         __typename: template.name,
         ...template,
         contentBlocks,
         page: pageID,
+        menus,
       };
 
       return payload;

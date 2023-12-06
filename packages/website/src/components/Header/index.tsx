@@ -15,6 +15,7 @@ export type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
 const Container = styled.header`
   background-color: ${({ theme }) => theme.color.backgroundPrimary.toString()};
+  /* background-color: lime; */
   color: ${({ theme }) => theme.color.textPrimary.toString()};
   box-shadow:
     rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,

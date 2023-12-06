@@ -106,11 +106,7 @@ const Page: React.FC = () => {
         return <TemplateSecondDesktop fragmentRef={fragmentRef} />;
 
       case t === 'TemplateConferencesPage':
-        return (
-          <TemplateConferencesDesktop
-          // fragmentRef={fragmentRef}
-          />
-        );
+        return <TemplateConferencesDesktop fragmentRef={fragmentRef} />;
 
       case t === 'TemplateFallbackPage':
         return <TemplateFallbackDesktop fragmentRef={fragmentRef} />;
@@ -152,6 +148,7 @@ graphql`
         ...TemplateHomeMobileFragment @skip(if: $isDesktop)
         ...TemplateFallbackDesktopFragment
         ...TemplateSecondDesktopFragment
+        ...TemplateConferencesDesktopFragment
       }
     }
   }

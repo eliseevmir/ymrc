@@ -10,7 +10,7 @@ import IconLogoEagle from '~/components/Icons/IconLogoEagle';
 type Props = React.HTMLAttributes<HTMLDivElement>;
 
 const LogoEagle = styled(IconLogoEagle)`
-  width: 10em;
+  width: 6em;
   height: auto;
 `;
 
@@ -19,7 +19,7 @@ const Container = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 1.5em;
 `;
 
 const Title = styled(Heading1)`
@@ -31,7 +31,9 @@ const HeaderContent: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (pr
 
   return (
     <Container {...otherProps} ref={ref}>
-      <LogoEagle />
+      <Link to="/">
+        <LogoEagle />
+      </Link>
       <Title>
         ФБУН «Екатеринбургский Медицинский Научный Центр профилактики и охраны здоровья рабочих
         промпредприятий»

@@ -8,13 +8,13 @@ import Footer from '~/components/Footer';
 import HeaderMenu from '~/components/HeaderMenu';
 
 // import Slider from '~/components/Slider';
-// import fragment, {
-//   TemplateHomeDesktopFragment$key,
-// } from '~/relay/artifacts/TemplateHomeDesktopFragment.graphql';
+import fragment, {
+  TemplateConferencesDesktopFragment$key,
+} from '~/relay/artifacts/TemplateConferencesDesktopFragment.graphql';
 
-// interface Props {
-//   readonly fragmentRef: TemplateHomeDesktopFragment$key;
-// }
+interface Props {
+  readonly fragmentRef: TemplateConferencesDesktopFragment$key;
+}
 
 interface Props {}
 
@@ -34,13 +34,13 @@ const Slider = styled.div`
 `;
 
 const TemplateConferencesDesktop: React.FC<Props> = props => {
-  //   const { fragmentRef } = props;
+  const { fragmentRef } = props;
   const theme = useTheme();
-  //   const { template } = useFragment<TemplateHomeDesktopFragment$key>(fragment, fragmentRef);
+  const { template } = useFragment<TemplateConferencesDesktopFragment$key>(fragment, fragmentRef);
 
-  //   if (template?.__typename !== 'TemplateHomePage') {
-  //     return null;
-  //   }
+  if (template?.__typename !== 'TemplateConferencesPage') {
+    return null;
+  }
 
   return (
     <>
@@ -57,9 +57,8 @@ const TemplateConferencesDesktop: React.FC<Props> = props => {
           }
         `}
       />
-      <h1>CONFERENCES</h1>
       {/* <Container> */}
-      {/* <Header>{headerMenu && <HeaderMenu fragmentRef={headerMenu} />}</Header> */}
+      <Header>{template.mainMenu && <HeaderMenu fragmentRef={template.mainMenu} />}</Header>
       {/* <Header /> */}
       <MainContainer>
         <Slider />
@@ -73,24 +72,20 @@ const TemplateConferencesDesktop: React.FC<Props> = props => {
 
 export default TemplateConferencesDesktop;
 
-// graphql`
-//   fragment TemplateHomeDesktopFragment on Page {
-//     template {
-//       __typename
-//       ... on TemplateHomePage {
-//         id
+graphql`
+  fragment TemplateConferencesDesktopFragment on Page {
+    template {
+      __typename
+      ... on TemplateConferencesPage {
+        id
+        mainMenu {
+          ...HeaderMenuFragment
+        }
 
-//         # ...TemplateHomeHeadingFragment
-//         # ...TemplateHomePaymentsFragment
-//         # ...TemplateHomeSliderFragment
-//       }
-//     }
-
-//     # headerMenu {
-//     #   ...HeaderMenuFragment
-//     # }
-//     # pageMenus {
-//     #   ...HeaderMenuFragment
-//     # }
-//   }
-// `;
+        # ...TemplateHomeHeadingFragment
+        # ...TemplateHomePaymentsFragment
+        # ...TemplateHomeSliderFragment
+      }
+    }
+  }
+`;

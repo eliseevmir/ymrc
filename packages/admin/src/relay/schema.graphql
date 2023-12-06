@@ -617,6 +617,7 @@ type TemplateSecondPage implements PageTemplateInterface {
 
   """Page content"""
   content: ContentBlockLexical
+  mainMenu: PageMenu
 }
 
 type TemplateConferencesPage implements PageTemplateInterface {
@@ -624,7 +625,7 @@ type TemplateConferencesPage implements PageTemplateInterface {
   name: TemplateName!
   displayName: String!
   page: Page!
-  menu: PageMenu
+  mainMenu: PageMenu
 }
 
 type TemplateFallbackPage implements PageTemplateInterface {
