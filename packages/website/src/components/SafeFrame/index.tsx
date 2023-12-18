@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const SafeFrame = styled.div`
-  max-width: 1250px;
+  max-width: 80em;
   margin: 0 auto;
 `;
 

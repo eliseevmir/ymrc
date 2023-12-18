@@ -3,10 +3,12 @@ import { usePopper } from 'react-popper';
 import { Link, useMatch } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { ClassNames, css } from '@emotion/react';
+import { FormattedMessage } from 'react-intl';
 
 import IconChevronRight from '~/components/Icons/IconChevronRight';
 import DropDownMenu from '~/components/HeaderMenu/DropDownMenu';
 import { HeaderMenuFragment$data } from '~/relay/artifacts/HeaderMenuFragment.graphql';
+import { useTranslations } from './translations';
 
 export type ItemLevel1 = NonNullable<HeaderMenuFragment$data['items']>[0];
 export type ItemLevel2 = NonNullable<ItemLevel1['childs']>[0];
@@ -61,6 +63,7 @@ const DropdownItem: React.ForwardRefRenderFunction<HTMLLIElement, DropdownItemPr
   const [referenceElement, setReferenceElement] = React.useState<HTMLAnchorElement | null>(null);
   const [popperElement, setPopperElement] = React.useState<HTMLDivElement | null>(null);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const { translatedMenuItems } = useTranslations();
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'right-start',
     modifiers: [
@@ -111,7 +114,17 @@ const DropdownItem: React.ForwardRefRenderFunction<HTMLLIElement, DropdownItemPr
               ${isMatch && itemStyleActive}
             `}
           >
-            <span>{name || page?.name}</span>
+            {/* <span>{name || page?.name}</span> */}
+            {page?.name && (
+              <FormattedMessage
+                {...(translatedMenuItems[
+                  page.name.toLowerCase() as keyof typeof translatedMenuItems
+                ] || {
+                  id: `2121321`,
+                  defaultMessage: 'unknown',
+                })}
+              />
+            )}
             {/* {'childs' in item && item.childs.length > 0 && <AngleIcon />} */}
           </ItemLink>
         )}

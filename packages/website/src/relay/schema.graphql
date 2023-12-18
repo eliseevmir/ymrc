@@ -507,7 +507,7 @@ type TemplateHomePage implements PageTemplateInterface {
   heading: ContentBlockPlainText
   payments: Payments
   slider: Slider
-  mainMenu: PageMenu
+  mainMenu: PageMenu!
 }
 
 interface PageTemplateInterface {
@@ -617,7 +617,7 @@ type TemplateSecondPage implements PageTemplateInterface {
 
   """Page content"""
   content: ContentBlockLexical
-  mainMenu: PageMenu
+  mainMenu: PageMenu!
 }
 
 type TemplateConferencesPage implements PageTemplateInterface {
@@ -625,7 +625,7 @@ type TemplateConferencesPage implements PageTemplateInterface {
   name: TemplateName!
   displayName: String!
   page: Page!
-  mainMenu: PageMenu
+  mainMenu: PageMenu!
 }
 
 type TemplateFallbackPage implements PageTemplateInterface {

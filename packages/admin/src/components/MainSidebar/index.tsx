@@ -46,7 +46,7 @@ const MainSidebar: React.ForwardRefRenderFunction<HTMLDivElement, MainSidebarPro
   return (
     <SidebarContainer position="left" {...props} ref={ref}>
       <SidebarHeader>
-        <AppLogo variant="inline" />
+        {/* <AppLogo variant="inline" /> */}
         <ToggleButton>
           <MenuIcon />
         </ToggleButton>

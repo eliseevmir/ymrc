@@ -16,11 +16,6 @@ interface Props {
   readonly fragmentRef: TemplateHomeDesktopFragment$key;
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-flow: column;
-`;
-
 const MainContainer = styled.main`
   min-height: 1000px;
 `;
@@ -55,14 +50,13 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
           }
         `}
       />
-      {/* <Container> */}
-      <Header>{template.mainMenu && <HeaderMenu fragmentRef={template.mainMenu} />}</Header>
+      <Header>
+        <HeaderMenu fragmentRef={template.mainMenu} />
+      </Header>
       <MainContainer>
         <Slider />
       </MainContainer>
       <Footer />
-
-      {/* </Container> */}
     </>
   );
 };

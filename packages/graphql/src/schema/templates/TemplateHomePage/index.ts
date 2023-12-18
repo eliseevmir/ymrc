@@ -90,7 +90,7 @@ const TemplateHomePage = new GraphQLObjectType<TemplateParent, Context>({
       },
 
       mainMenu: {
-        type: PageMenu,
+        type: new GraphQLNonNull(PageMenu),
         resolve: async parent => parent.menus.find(m => m.name === 'Main menu'),
       },
     };

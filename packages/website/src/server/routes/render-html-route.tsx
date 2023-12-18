@@ -127,13 +127,13 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   };
 
   const isDesktop = device === 'desktop';
-  const isBlog = String(url).match(/^\/blog(\/.*|)$/) !== null;
+  // const isBlog = String(url).match(/^\/blog(\/.*|)$/) !== null;
 
   // Fill Relay store by fetching request
   await fetchQuery<PageQuery>(relayEnvironment, query, {
     path: String(url),
     isDesktop,
-    isBlog,
+    // isBlog,
   })
     .toPromise()
     .then(resp => {

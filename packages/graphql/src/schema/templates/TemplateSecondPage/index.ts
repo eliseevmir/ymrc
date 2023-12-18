@@ -40,7 +40,7 @@ const TemplateSecondPage = new GraphQLObjectType<TemplateParent, Context>({
       resolve: parent => parent.contentBlocks.find(cb => cb.name === 'page:content'),
     },
     mainMenu: {
-      type: PageMenu,
+      type: new GraphQLNonNull(PageMenu),
       resolve: async parent => parent.menus.find(m => m.name === 'Main menu'),
     },
   }),

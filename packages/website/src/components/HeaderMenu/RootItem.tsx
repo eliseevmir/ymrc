@@ -49,7 +49,7 @@ const AngleIcon = styled(IconChevronDown)`
 
 const RootItem: React.ForwardRefRenderFunction<HTMLLIElement, RootItemProps> = (props, ref) => {
   const { item, ...otherProps } = props;
-  const { url, page, target, childs, name } = item;
+  const { url, page, target, childs } = item;
   const isMatch = useMatch(`${page?.path}/*`);
   const [referenceElement, setReferenceElement] = React.useState<HTMLAnchorElement | null>(null);
   const [popperElement, setPopperElement] = React.useState<HTMLDivElement | null>(null);
@@ -90,9 +90,6 @@ const RootItem: React.ForwardRefRenderFunction<HTMLLIElement, RootItemProps> = (
     setDropdownOpen(false);
   };
 
-  const namePage = page?.name || 'MENU';
-  const a = translatedMenuItems[namePage.toLowerCase()];
-
   return (
     <MenuItem {...otherProps} ref={ref} onMouseOver={mouseOverEvent} onMouseLeave={mouseLeaveEvent}>
       <ClassNames>
@@ -106,14 +103,13 @@ const RootItem: React.ForwardRefRenderFunction<HTMLLIElement, RootItemProps> = (
               ${isMatch !== null && itemStyleActive}
             `}
           >
-            {/* <FormattedMessage
-              {...(translatedMenuItems[namePage.toLowerCase()] || {
-                id: `2121321`,
-                defaultMessage: 'asdsad',
-              })}
-            /> */}
-            <span>{name || page?.name}</span>
-            {/* <span>{name}</span> */}
+            {page?.name && (
+              <FormattedMessage
+                {...(translatedMenuItems[
+                  page.name.toLocaleLowerCase() as keyof typeof translatedMenuItems
+                ] || translatedMenuItems.unknown)}
+              />
+            )}
             {childs && childs.length && <AngleIcon />}
           </ItemLink>
         )}
