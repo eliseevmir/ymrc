@@ -13,17 +13,17 @@
         "webpack://@boilerplate/website/*": "${webRoot}/packages/website/*",
       },
     },
-    {
-      "name": "Website Attach",
-      "type": "chrome",
-      "request": "launch",
-      "port": 9228,
-      "webRoot": "${workspaceFolder}",
-      "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "webpack://@boilerplate/website/*": "${webRoot}/packages/website/*",
-      },
-    },
+    // {
+    //   "name": "Website Attach",
+    //   "type": "chrome",
+    //   "request": "launch",
+    //   "port": 9228,
+    //   "webRoot": "${workspaceFolder}",
+    //   "sourceMaps": true,
+    //   "sourceMapPathOverrides": {
+    //     "webpack://@boilerplate/website/*": "${webRoot}/packages/website/*",
+    //   },
+    // },
     {
       "name": "WebAdmin Launch and Debug",
       "type": "chrome",
@@ -36,17 +36,17 @@
         "webpack://@boilerplate/admin/*": "${webRoot}/*",
       },
     },
-    {
-      "name": "WebAdmin Attach",
-      "type": "chrome",
-      "request": "attach",
-      "port": 9228,
-      "webRoot": "${workspaceFolder}/packages/admin",
-      "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "webpack://@boilerplate/admin/*": "${webRoot}/*",
-      },
-    },
+    // {
+    //   "name": "WebAdmin Attach",
+    //   "type": "chrome",
+    //   "request": "attach",
+    //   "port": 9228,
+    //   "webRoot": "${workspaceFolder}/packages/admin",
+    //   "sourceMaps": true,
+    //   "sourceMapPathOverrides": {
+    //     "webpack://@boilerplate/admin/*": "${webRoot}/*",
+    //   },
+    // },
     {
       "name": "Debug GraphQL Server",
       "type": "node",

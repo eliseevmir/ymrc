@@ -3,5 +3,8 @@
     "statusBar.background": "#f1c500",
     "statusBar.debuggingBackground": "#ee4b00",
     "statusBar.foreground": "#382b00"
-  }
+  },
+
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "docwriter.style": "JSDoc"
 }

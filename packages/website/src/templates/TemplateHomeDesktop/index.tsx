@@ -50,9 +50,7 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
           }
         `}
       />
-      <Header>
-        <HeaderMenu fragmentRef={template.mainMenu} />
-      </Header>
+      <Header fragmentRef={template.mainMenu} />
       <MainContainer>
         <Slider />
       </MainContainer>
@@ -71,7 +69,8 @@ graphql`
         id
 
         mainMenu {
-          ...HeaderMenuFragment
+          ...HeaderFragment
+          # ...HeaderMenuFragment
         }
         # ...TemplateHomeHeadingFragment
         # ...TemplateHomePaymentsFragment

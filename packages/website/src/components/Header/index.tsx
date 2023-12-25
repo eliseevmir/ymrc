@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { graphql, useQueryLoader } from 'react-relay';
+import { graphql, useFragment } from 'react-relay';
 
-// import NavMenu from '~/components/AppMenu';
 import SafeFrame from '~/components/SafeFrame';
-import HeaderToolbar from '~/components/Header/HeaderToolbar';
+import HeaderMenu from '~/components/HeaderMenu';
 import HeaderContent from '~/components/Header/HeaderContent';
+import fragmentSpec, { HeaderFragment$key } from '~/relay/artifacts/HeaderFragment.graphql';
 
-export type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
+
+export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  readonly fragmentRef: HeaderFragment$key;
+}
 
 const Container = styled.header`
   background-color: ${({ theme }) => theme.color.backgroundPrimary.toString()};
@@ -37,16 +40,24 @@ const Inner = styled(SafeFrame)`
 `;
 
 const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (props, ref) => {
-  const { children, ...otherProps } = props;
+  const { fragmentRef, ...otherProps } = props;
+
+  const fragment = useFragment(fragmentSpec, fragmentRef);
 
   return (
     <Container {...otherProps} ref={ref}>
       <Inner>
         <HeaderContent />
-        {children}
+        <HeaderMenu fragmentRef={fragment} />
       </Inner>
     </Container>
   );
 };
 
 export default React.forwardRef(Header);
+
+graphql`
+  fragment HeaderFragment on PageMenu {
+    ...HeaderMenuFragment
+  }
+`;

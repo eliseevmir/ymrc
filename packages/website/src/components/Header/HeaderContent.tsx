@@ -1,35 +1,42 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Link, useMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import ButtonBlack from '~/components/ButtonBlack';
-import ButtonOutlined from '~/components/ButtonOutlined';
-import Heading1 from '~/components/Heading1';
 import IconLogoEagle from '~/components/Icons/IconLogoEagle';
 
 type Props = React.HTMLAttributes<HTMLDivElement>;
 
 const StyledLogoEagle = styled(IconLogoEagle)`
-  width: 5em;
+  width: 10em;
   height: auto;
-  margin-right: 0.5em;
+  /* font-size: 10em; */
+  margin-right: 0.1em;
+  outline: 1px solid aqua;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.color.accentPrimary.toString()};
 `;
 
 const Container = styled.div`
   outline: 1px solid red;
-  display: flex;
+  /* display: flex; */
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  /* align-items: center; */
+  /* justify-content: space-between; */
   padding: 1em 1.5em;
   max-width: 40em;
 `;
 
-const Title = styled(Heading1)`
+const Title = styled.span`
   outline: 1px solid purple;
   text-align: center;
   font-size: 1em;
+  font-weight: 700;
 `;
 
 const HeaderContent: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (props, ref) => {
@@ -37,27 +44,27 @@ const HeaderContent: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (pr
 
   return (
     <Container {...otherProps} ref={ref}>
-      <Link to="/">
+      <StyledLink to="/">
         <StyledLogoEagle />
-      </Link>
-      <Title>
-        <FormattedMessage
-          defaultMessage="ФБУН «Екатеринбургский Медицинский Научный Центр профилактики и охраны здоровья рабочих
+        <Title>
+          <FormattedMessage
+            defaultMessage="ФБУН «Екатеринбургский Медицинский Научный Центр профилактики и охраны здоровья рабочих
         промпредприятий»"
-        />
-      </Title>
-      {/* <Link to={'http://localhost:9001/'} target="_blank">
+          />
+        </Title>
+        {/* <Link to={'http://localhost:9001/'} target="_blank">
         Enter crm
       </Link> */}
-      {/* <Link to={'http://localhost:9000/'} target="_blank">
+        {/* <Link to={'http://localhost:9000/'} target="_blank">
         Enter admin
       </Link> */}
-      {/* <ButtonBlack type="button" color="secondary">
+        {/* <ButtonBlack type="button" color="secondary">
         Войти
       </ButtonBlack> */}
-      {/* <ButtonOutlined type="button" color="secondary">
+        {/* <ButtonOutlined type="button" color="secondary">
         Регистрация
       </ButtonOutlined> */}
+      </StyledLink>
     </Container>
   );
 };

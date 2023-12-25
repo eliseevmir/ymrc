@@ -10,7 +10,8 @@ export interface HeaderMenuProps extends Omit<React.HTMLAttributes<HTMLDivElemen
 }
 
 const Nav = styled.nav`
-  flex: 1;
+  outline: 1px solid lime;
+  width: 100%;
   display: flex;
 `;
 
@@ -21,6 +22,7 @@ const Menu = styled.ul`
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const HeaderMenu: React.ForwardRefRenderFunction<HTMLUListElement, HeaderMenuProps> = (
