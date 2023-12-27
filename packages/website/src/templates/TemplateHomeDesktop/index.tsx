@@ -5,9 +5,9 @@ import { graphql, useFragment } from 'react-relay';
 
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
-import HeaderMenu from '~/components/HeaderMenu';
+import Slider from '~/components/Slider';
+import Building from '~/assets/BUILDING.jpg';
 
-// import Slider from '~/components/Slider';
 import fragment, {
   TemplateHomeDesktopFragment$key,
 } from '~/relay/artifacts/TemplateHomeDesktopFragment.graphql';
@@ -17,13 +17,20 @@ interface Props {
 }
 
 const MainContainer = styled.main`
-  min-height: 1000px;
+  width: 100%;
+  min-height: 100vh;
 `;
 
-const Slider = styled.div`
-  background-color: pink;
-  width: 100%;
-  height: 400px;
+const ImageWrapper = styled.div`
+  outline: 1px solid green;
+  width: 80%;
+  /* width: 900px; */
+  height: 650px;
+  background-image: url(${Building});
+  background-size: cover;
+  background-position: 0 -350px;
+  background-repeat: no-repeat;
+  margin: 0 auto;
 `;
 
 const TemplateHomeDesktopFragment: React.FC<Props> = props => {
@@ -52,7 +59,8 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
       />
       <Header fragmentRef={template.mainMenu} />
       <MainContainer>
-        <Slider />
+        {/* <Slider /> */}
+        <ImageWrapper />
       </MainContainer>
       <Footer />
     </>

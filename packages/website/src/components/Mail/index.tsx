@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { FormattedMessage } from 'react-intl';
 
 type MailProps = React.HTMLAttributes<HTMLAnchorElement>;
 
 const MailContainer = styled.a`
-  color: ${({ theme }) => theme.color.accentSecondary.toString()};
+  color: ${({ theme }) => theme.color.textSecondary.toString()};
   text-decoration: none;
 `;
 
@@ -13,7 +14,7 @@ const Mail: React.ForwardRefRenderFunction<HTMLAnchorElement, MailProps> = (prop
 
   return (
     <MailContainer href="mail:info@ymrc.ru" {...otherProps} ref={ref}>
-      info@ymrc.ru
+      <FormattedMessage defaultMessage="info@ymrc.ru" />
     </MailContainer>
   );
 };

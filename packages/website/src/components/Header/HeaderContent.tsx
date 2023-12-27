@@ -24,10 +24,7 @@ const StyledLink = styled(Link)`
 
 const Container = styled.div`
   outline: 1px solid red;
-  /* display: flex; */
-  width: 100%;
-  /* align-items: center; */
-  /* justify-content: space-between; */
+  /* width: 100%; */
   padding: 1em 1.5em;
   max-width: 40em;
 `;
@@ -52,18 +49,6 @@ const HeaderContent: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (pr
         промпредприятий»"
           />
         </Title>
-        {/* <Link to={'http://localhost:9001/'} target="_blank">
-        Enter crm
-      </Link> */}
-        {/* <Link to={'http://localhost:9000/'} target="_blank">
-        Enter admin
-      </Link> */}
-        {/* <ButtonBlack type="button" color="secondary">
-        Войти
-      </ButtonBlack> */}
-        {/* <ButtonOutlined type="button" color="secondary">
-        Регистрация
-      </ButtonOutlined> */}
       </StyledLink>
     </Container>
   );

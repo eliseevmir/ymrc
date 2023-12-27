@@ -1,35 +1,48 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import Paragraph from '~/components/Paragraph';
 import SafeFrame from '~/components/SafeFrame';
-import Telephone from '~/components/Telephone';
+import Phone from '~/components/Phone';
 import Mail from '~/components/Mail';
+import IconInt from '~/components/Icons/IconInt';
 
 type FooterProps = React.HTMLAttributes<HTMLDivElement>;
 
 const Container = styled.footer`
-  width: 100%;
+  display: flex;
   outline: 1px solid lime;
   background-color: ${({ theme }) => theme.color.accentPrimary.toString()};
-  min-height: 200px;
+  min-height: 10em;
 `;
 
 const Inner = styled(SafeFrame)`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `;
 
 const Contacts = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.5em;
 `;
 
-const Adress = styled.p`
-  color: ${({ theme }) => theme.color.accentSecondary.toString()};
+const Adress = styled(Paragraph)`
+  color: ${({ theme }) => theme.color.textSecondary.toString()};
 `;
 
-const Copyright = styled.p`
-  color: ${({ theme }) => theme.color.accentSecondary.toString()};
+const Copyright = styled(Paragraph)`
+  color: ${({ theme }) => theme.color.textSecondary.toString()};
+`;
+
+/*
+ * Подогнать все иконки под один размер viewBox
+ */
+const StyledIconInt = styled(IconInt)`
+  font-size: 3em;
+  color: ${({ theme }) => theme.color.textSecondary.toString()};
 `;
 
 const Footer: React.ForwardRefRenderFunction<HTMLDivElement, FooterProps> = (props, ref) => {
@@ -39,12 +52,14 @@ const Footer: React.ForwardRefRenderFunction<HTMLDivElement, FooterProps> = (pro
     <Container {...otherProps} ref={ref}>
       <Inner>
         <Contacts>
-          <Adress>г. Екатеринбург, ул. Попова, 30</Adress>
-          <Telephone />
+          <Adress noMargin>г. Екатеринбург, ул. Попова, 30</Adress>
+          <Phone />
           <Mail />
-          <Copyright>©2002 – 2023 ФБУН «ЕМНЦ ПОЗРПП»</Copyright>
+          <Copyright noMargin>©2002 – 2023 ФБУН «ЕМНЦ ПОЗРПП»</Copyright>
         </Contacts>
-        <div>INFO</div>
+        <div>
+          <StyledIconInt />
+        </div>
         <div>INFO</div>
       </Inner>
     </Container>

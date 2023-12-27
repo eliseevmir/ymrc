@@ -20,6 +20,7 @@
     "migrate:make": "npm run migrate:make --workspace packages/graphql",
     "migrate:list": "npm run migrate:list --workspace packages/graphql",
     "migrate:check": "npm run migrate:check --workspace packages/graphql",
+    "migrate:rollback:all": "npm run migrate:rollback:all --workspace packages/graphql",
     "build:migrations": "npm run build:migrations --workspace packages/graphql",
     "seed:run": "npm run seed:run --workspace packages/graphql",
     "prepare:relay": "node ./scripts/prepare-relay.js",
