@@ -7,6 +7,9 @@ import Header from '~/components/Header';
 import Footer from '~/components/Footer';
 import Slider from '~/components/Slider';
 import Building from '~/assets/BUILDING.jpg';
+import Building1 from '~/assets/BUILDINGone.jpg';
+import Building2 from '~/assets/BUILDINGtwo.png';
+import Building3 from '~/assets/BUILDINGthree.jpg';
 
 import fragment, {
   TemplateHomeDesktopFragment$key,
@@ -33,6 +36,42 @@ const ImageWrapper = styled.div`
   margin: 0 auto;
 `;
 
+const ImageWrapper1 = styled.div`
+  outline: 1px solid green;
+  width: 80%;
+  /* width: 900px; */
+  height: 650px;
+  background-image: url(${Building1});
+  background-size: cover;
+  background-position: 0 -350px;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+`;
+
+const ImageWrapper2 = styled.div`
+  outline: 1px solid green;
+  width: 80%;
+  /* width: 900px; */
+  height: 650px;
+  background-image: url(${Building2});
+  background-size: cover;
+  background-position: 0 -350px;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+`;
+
+const ImageWrapper3 = styled.div`
+  outline: 1px solid green;
+  width: 80%;
+  /* width: 900px; */
+  height: 650px;
+  background-image: url(${Building3});
+  background-size: cover;
+  background-position: 0 -350px;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+`;
+
 const TemplateHomeDesktopFragment: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
@@ -41,6 +80,16 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
   if (template?.__typename !== 'TemplateHomePage') {
     return null;
   }
+
+  const settingsSlider = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+  };
 
   return (
     <>
@@ -59,8 +108,12 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
       />
       <Header fragmentRef={template.mainMenu} />
       <MainContainer>
-        {/* <Slider /> */}
-        <ImageWrapper />
+        <Slider {...settingsSlider}>
+          <ImageWrapper />
+          <ImageWrapper1 />
+          <ImageWrapper2 />
+          <ImageWrapper3 />
+        </Slider>
       </MainContainer>
       <Footer />
     </>
